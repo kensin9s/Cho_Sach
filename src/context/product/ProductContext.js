@@ -182,6 +182,7 @@ const setProductsNavKey = dispatch => key => {
 const getProducts = dispatch => async userId => {
   try {
     const response = await shopApi.get('/products.json');
+    console.log('response',response)
     const data = response.data;
     const products = [];
     for (let key in data) {

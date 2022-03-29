@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const instance = axios.create({
   baseURL:
-    'https://shop-app-5a476-default-rtdb.europe-west1.firebasedatabase.app/',
+    'https://appsach-6eabc-default-rtdb.firebaseio.com/',
   headers: {
     'Content-Type': 'application/json',
   },

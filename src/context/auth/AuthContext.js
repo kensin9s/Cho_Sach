@@ -57,7 +57,7 @@ const tryLocalLogin = dispatch => async () => {
 const signUp = dispatch => async ({email, password}) => {
   try {
     const response = await axios.post(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCPrUOcTWvUSZ4n5kuTSier5YFuF2DfgQY',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBcCfZVjnTZ7YbSYG89H3fUjsxptxooy8Y',
       {email, password, returnSecureToken: true},
       {
         headers: {
@@ -92,7 +92,7 @@ const signUp = dispatch => async ({email, password}) => {
 const login = dispatch => async ({email, password}) => {
   try {
     const response = await axios.post(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCPrUOcTWvUSZ4n5kuTSier5YFuF2DfgQY',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBcCfZVjnTZ7YbSYG89H3fUjsxptxooy8Y',
       {email, password, returnSecureToken: true},
       {
         headers: {
