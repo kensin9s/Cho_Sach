@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     height: '100%',
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     overflow: 'hidden',
     flexDirection: 'row',

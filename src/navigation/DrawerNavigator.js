@@ -68,7 +68,7 @@ const DrawerNavigator = () => {
             justifyContent: 'space-between',
           }}>
           <View>
-            <Text style={styles.title}>Core Navigation</Text>
+            <Text style={styles.title}>Menu</Text>
             <DrawerItemList {...props} />
           </View>
           <TouchableOpacity style={styles.logoutButton} onPress={logout}>
@@ -86,7 +86,7 @@ const DrawerNavigator = () => {
         name="ProductsFlow"
         component={ProductsNavigator}
         options={{
-          title: 'Marketplace',
+          title: 'Books Marketplace',
           drawerIcon: ShopIcon,
         }}
       />
@@ -141,11 +141,12 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 16,
   },
   title: {
-    fontSize: 22,
+    fontSize: 25,
     fontFamily: 'Lato-Bold',
     color: `rgb(${Colors.text.secondary})`,
     marginVertical: 20,
     marginLeft: 10,
+    alignSelf:'center',
   },
   logoutButton: {
     width: '100%',

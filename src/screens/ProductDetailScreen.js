@@ -189,6 +189,7 @@ export default ProductDetailScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'black'
   },
   gradient: {
     height: '20%',

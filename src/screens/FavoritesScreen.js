@@ -41,6 +41,7 @@ export default FavoritesScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#EEEEEE'
   },
   list: {
     alignItems: 'center',

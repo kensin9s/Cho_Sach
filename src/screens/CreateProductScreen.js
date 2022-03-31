@@ -32,6 +32,7 @@ export default CreateProductScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  
   },
   screenTitle: {
     fontFamily: 'Lato-Bold',

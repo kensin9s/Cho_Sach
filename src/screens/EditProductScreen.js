@@ -15,7 +15,7 @@ const EditProductScreen = ({route}) => {
   const selectedProduct = products.find(prod => prod.id === prodId);
 
   return (
-    <View>
+    <View style={{backgroundColor:'#EEEEEE'}}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <ProductForm
           submitButtonTitle="Save"

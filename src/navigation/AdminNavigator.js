@@ -33,7 +33,7 @@ const AdminNavigator = () => {
         name="Admin"
         component={UserProductsScreen}
         options={({navigation}) => ({
-          title: 'My Products',
+          title: 'My Books',
           headerLeft: () => (
             <TouchableOpacity
               style={{marginLeft: 20}}
@@ -61,7 +61,7 @@ const AdminNavigator = () => {
         name="CreateProduct"
         component={CreateProductScreen}
         options={({navigation}) => ({
-          title: 'Create Product',
+          title: 'Create Books',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

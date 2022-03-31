@@ -115,7 +115,7 @@ const ProductsScreen = ({navigation}) => {
   if (error.type === REQUEST_NETWORK_ERROR && !products.length) {
     return <ErrorScreen errorMessage={error.message} onRetry={loadData} />;
   }
-
+  console.log(products);
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -127,13 +127,16 @@ const ProductsScreen = ({navigation}) => {
       />
     </View>
   );
+ 
 };
+
 
 export default ProductsScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#EEEEEE'
   },
   centered: {
     flex: 1,

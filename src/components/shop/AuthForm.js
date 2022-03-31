@@ -162,7 +162,7 @@ const AuthForm = ({buttonTitle, onSubmit}) => {
   }, [triggerValidation]);
 
   return (
-    <View>
+    <View style={{marginTop:30,}}>
       <LabledInput
         required
         autoCapitalize="none"

@@ -80,6 +80,7 @@ const OrdersScreen = ({navigation}) => {
   }
 
   return (
+    <View style={{backgroundColor:'#EEEEEE'}}>
     <FlatList
       refreshControl={
         <RefreshControl
@@ -97,6 +98,7 @@ const OrdersScreen = ({navigation}) => {
       contentContainerStyle={{paddingHorizontal: 25, paddingBottom: 10}}
       renderItem={({item}) => <OrderItem orderItem={item} />}
     />
+    </View>
   );
 };
 

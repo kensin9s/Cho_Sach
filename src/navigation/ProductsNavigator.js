@@ -40,7 +40,7 @@ const ProductsNavigator = () => {
         name="Products"
         component={ProductsScreen}
         options={({navigation}) => ({
-          title: 'Marketplace',
+          title: 'Books Market',
           headerRight: () => (
             <CartIcon
               navigation={navigation}

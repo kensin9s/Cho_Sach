@@ -63,7 +63,7 @@ const UserProductsScreen = ({navigation}) => {
   }
 
   return (
-    <View>
+    <View style={{backgroundColor:'#EEEEEE'}}>
       <FlatList data={userProducts} renderItem={renderItem} />
     </View>
   );

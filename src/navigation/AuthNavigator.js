@@ -6,6 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
+  Image,
 } from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -16,6 +17,7 @@ import LeftIcon from '../components/icons/LeftIcon';
 
 const Stack = createStackNavigator();
 const textColor = `rgb(${Colors.text.primary})`;
+const image = { uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8-kws7CclM27kSvZrDTp6smQcfyLRoo8MAw&usqp=CAU"};
 
 const AuthNavigator = () => {
   return (
@@ -26,8 +28,10 @@ const AuthNavigator = () => {
         options={{
           header: () => (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <View style={{...styles.headerStyle, justifyContent: 'flex-end'}}>
-                <Text style={styles.screenTitle}>Create {'\n'}Account</Text>
+              <View style={{...styles.headerStyle, justifyContent: 'flex-end',marginTop:40}}>
+              <Image source={image} style={{alignSelf:'center', width:200, height:160,}}/>
+                <Text style={styles.Text}>Create Account</Text> 
+
               </View>
             </TouchableWithoutFeedback>
           ),
@@ -54,7 +58,8 @@ const AuthNavigator = () => {
                     color={`rgb(${Colors.text.primary})`}
                   />
                 </TouchableOpacity>
-                <Text style={styles.screenTitle}>Welcome {'\n'}Back</Text>
+                <Image source={image} style={{alignSelf:'center', width:200, height:160,}}/>
+                <Text style={styles.Text}>Login</Text>
               </View>
             </TouchableWithoutFeedback>
           ),
@@ -84,8 +89,16 @@ const styles = StyleSheet.create({
   },
   screenTitle: {
     fontFamily: 'Lato-Black',
-    fontSize: 40,
+    fontSize: 35,
     color: textColor,
     lineHeight: 60,
+    
+  },
+Text: {
+    fontFamily: 'Lato-Black',
+    fontSize: 35,
+    color: textColor,
+    lineHeight: 60,
+    alignSelf:'center',
   },
 });
