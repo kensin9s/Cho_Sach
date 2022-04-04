@@ -11,7 +11,9 @@ import {
   View,
   StatusBar,
   ActivityIndicator,
-  Text,
+ Text,
+ TextInput,
+ TouchableOpacity,
   RefreshControl,
 } from 'react-native';
 import Icon from '../components/icons/LightIcons';
@@ -27,6 +29,9 @@ import {Context as AuthContext} from '../context/auth/AuthContext';
 const primaryColor = `rgb(${Colors.primary})`;
 const textSecondaryColor = `rgba(${Colors.text.secondary}, 0.7)`;
 const CartIcon = () => <Icon name="cart-o" color="white" size={20} />;
+
+
+
 
 const ProductsScreen = ({navigation}) => {
   const {
@@ -62,7 +67,8 @@ const ProductsScreen = ({navigation}) => {
     const unsubscribe = navigation.addListener('focus', loadData);
     return unsubscribe;
   }, []);
-
+  const [text, onChangeText] = React.useState(null);
+  const [productFilter, setProductFilter] = React.useState(products);
   const renderItem = useCallback(
     ({item}) => (
       <ProductItem
@@ -119,9 +125,22 @@ const ProductsScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
+      <View style={{flexDirection:'row'}}>
+      <TextInput
+        style={styles.input}
+        onChangeText={(text) => {
+          setProductFilter(products.filter((u) => u.title.includes(text)));
+        }}
+        placeholder="What are you looking for?"
+      />
+      </View>
       <FlatList
         refreshControl={refreshControl()}
-        data={products}
+        // data={products}
+        data={productFilter.length > 0 ? productFilter : products}
+        keyExtractor={(item) => {
+          return 'product' + item.id;
+        }}
         contentContainerStyle={styles.list}
         renderItem={renderItem}
       />
@@ -153,4 +172,12 @@ const styles = StyleSheet.create({
   list: {
     alignItems: 'center',
   },
+  input: {
+    width: 350,
+    height: 50,
+    borderWidth: 5,
+    borderRadius: 10,
+    borderColor: "#C4C4C4",
+    marginLeft:20,
+},
 });
