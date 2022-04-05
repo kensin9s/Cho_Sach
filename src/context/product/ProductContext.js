@@ -145,6 +145,7 @@ const addProduct = dispatch => async prodData => {
       prodData.ownerId,
       prodData.title,
       prodData.imageUrl,
+      prodData.category,
       prodData.description,
       prodData.price,
     );
@@ -160,15 +161,20 @@ const editProduct = dispatch => async prodData => {
     prodData.ownerId,
     prodData.title,
     prodData.imageUrl,
+    prodData.category,
     prodData.description,
     prodData.price,
   );
   try {
+    console.log(prodData.price);
     await shopApi.patch(`/products/${product.id}.json`, {
       title: prodData.title,
       imageUrl: prodData.imageUrl,
+      category: prodData.category, 
+      price: prodData.price,
       description: prodData.description,
-    });
+     
+     });
     dispatch({type: EDIT_PRODUCT, payload: product});
   } catch (err) {
     throw err;
@@ -182,7 +188,7 @@ const setProductsNavKey = dispatch => key => {
 const getProducts = dispatch => async userId => {
   try {
     const response = await shopApi.get('/products.json');
-    console.log('response',response)
+    // console.log('response',response)
     const data = response.data;
     const products = [];
     for (let key in data) {
@@ -192,6 +198,7 @@ const getProducts = dispatch => async userId => {
           data[key].ownerId,
           data[key].title,
           data[key].imageUrl,
+          data[key].category,
           data[key].description,
           data[key].price,
         ),

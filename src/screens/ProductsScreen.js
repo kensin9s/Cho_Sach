@@ -121,7 +121,7 @@ const ProductsScreen = ({navigation}) => {
   if (error.type === REQUEST_NETWORK_ERROR && !products.length) {
     return <ErrorScreen errorMessage={error.message} onRetry={loadData} />;
   }
-  console.log(products);
+  // console.log(products);
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />

@@ -64,6 +64,7 @@ const ProductItem = ({
               <Text style={styles.title}>{product.title}</Text>
               <Text style={styles.price}>${product.price}</Text>
             </View>
+            
             {!hideActionButton && (
               <ActionButton
                 title={actionTitle}

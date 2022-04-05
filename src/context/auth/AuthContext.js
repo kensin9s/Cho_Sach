@@ -82,7 +82,7 @@ const signUp = dispatch => async ({email, password}) => {
     });
     setLogoutTimer(parseInt(response.data.expiresIn) * 1000, dispatch);
 
-    console.log(response.data);
+    // console.log(response.data);
   } catch (err) {
     console.log(err.response.data);
     throw err;

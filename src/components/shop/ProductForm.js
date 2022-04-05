@@ -7,6 +7,7 @@ import {Colors} from '../../constants/Colors';
 import LabledInput from './LabledInput';
 import {
   SET_TITLE,
+  SET_CATEGORY,
   SET_IMAGE,
   SET_PRICE,
   SET_DESCRIPTION,
@@ -14,6 +15,7 @@ import {
   SET_IMAGE_VALIDATION,
   SET_PRICE_VALIDATION,
   SET_DESCRIPTION_VALIDATION,
+  SET_CATEGORY_VALIDATION,
 } from './inputTypes';
 import ErrorModal from './ErrorModal';
 import FormSubmitButton from './FormSubmitButton';
@@ -31,6 +33,9 @@ const reducer = (state, {type, payload}) => {
     case SET_TITLE: {
       return {...state, title: {...state.title, value: payload}};
     }
+    case SET_CATEGORY: {
+      return {...state, category: {...state.category, value: payload}};
+    }
     case SET_IMAGE: {
       return {...state, imageUrl: {...state.imageUrl, value: payload}};
     }
@@ -42,6 +47,9 @@ const reducer = (state, {type, payload}) => {
     }
     case SET_TITLE_VALIDATION: {
       return {...state, title: {...state.title, isValid: payload}};
+    }
+    case SET_CATEGORY_VALIDATION: {
+      return {...state, category: {...state.category, isValid: payload}};
     }
     case SET_IMAGE_VALIDATION: {
       return {...state, imageUrl: {...state.imageUrl, isValid: payload}};
@@ -61,12 +69,13 @@ const reducer = (state, {type, payload}) => {
 const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
   const initialFormState = {
     title: {value: product?.title, isValid: product ? true : false},
+    category: {value: product?.category, isValid: product ? true : false},
     imageUrl: {value: product?.imageUrl, isValid: product ? true : false},
     price: {value: product?.price, isValid: product ? true : false},
     description: {value: product?.description, isValid: product ? true : false},
   };
 
-  const [{title, imageUrl, price, description}, dispatch] = useReducer(
+  const [{title,category, imageUrl, price, description}, dispatch] = useReducer(
     reducer,
     initialFormState,
   );
@@ -83,10 +92,12 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
   useEffect(() => {
     if (
       title.value &&
+      category.value&&
       imageUrl.value &&
       price.value &&
       description.value &&
       title.isValid &&
+      category.isValid &&
       imageUrl.isValid &&
       price.isValid &&
       description.isValid
@@ -97,10 +108,12 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
     }
   }, [
     title.value,
+    category.value,
     imageUrl.value,
     price.value,
     description.value,
     title.isValid,
+    category.isValid,
     imageUrl.isValid,
     price.isValid,
     description.isValid,
@@ -112,13 +125,15 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
         id: product.id,
         ownerId: product.ownerId,
         title: title.value,
+        category: category.value,
         imageUrl: imageUrl.value,
         description: description.value,
-        price: product.price,
+        price: parseFloat(price.value),
       }
     : {
         ownerId: userId,
         title: title.value,
+        category: category.value,
         imageUrl: imageUrl.value,
         description: description.value,
         price: parseFloat(price.value),
@@ -156,6 +171,7 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
         isValid={title.isValid}
         setIsValid={val => dispatch({type: SET_TITLE_VALIDATION, payload: val})}
       />
+ 
       <LabledInput
         required
         autoCapitalize="none"
@@ -165,15 +181,22 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
         isValid={imageUrl.isValid}
         setIsValid={val => dispatch({type: SET_IMAGE_VALIDATION, payload: val})}
       />
+           <LabledInput
+        required
+        autoCapitalize="sentences"
+        value={category.value}
+        label="category"
+        onChangeText={newTxt => dispatch({type: SET_CATEGORY, payload: newTxt})}
+        isValid={category.isValid}
+        setIsValid={val => dispatch({type: SET_CATEGORY_VALIDATION, payload: val})}
+      />
       <LabledInput
         required
         value={price.value?.toString()}
         label="Price"
         keyboardType="numeric"
         onChangeText={
-          product?.price
-            ? null
-            : newTxt => dispatch({type: SET_PRICE, payload: newTxt})
+        newTxt => dispatch({type: SET_PRICE, payload: newTxt})
         }
         validators={[priceValidator]}
         isValid={price.isValid}
