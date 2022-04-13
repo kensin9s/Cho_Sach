@@ -18,11 +18,11 @@ import {
 } from 'react-native';
 import Icon from '../components/icons/LightIcons';
 
-import ProductItem from '../components/shop/ProductItem';
-import {Context as ProductContext} from '../context/product/ProductContext';
+import CategoriesItem from '../components/shop/CategoriesItem';
+import {Context as CategoriesContext} from '../context/categories/CategoriesContext';
 import {Context as CartContext} from '../context/cart/CartContext';
 import {Colors} from '../constants/Colors';
-import {NO_PRODUCTS, REQUEST_NETWORK_ERROR} from '../context/product/types';
+import {NO_CATEGORIES, REQUEST_NETWORK_ERROR} from '../context/categories/types';
 import ErrorScreen from '../components/shop/ErrorScreen';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 
@@ -33,13 +33,12 @@ const CartIcon = () => <Icon name="cart-o" color="white" size={20} />;
 
 
 
-const ProductsScreen = ({navigation, route}) => {
+const Category = ({navigation}) => {
   const {
-    state: {products, error},
-    getProducts,
-    getFavorites,
-  } = useContext(ProductContext);
-  const listFilter = route?.params?.listFilter;
+    state: {categories, error},
+    getCategories,
+  } = useContext(CategoriesContext);
+
   const {addToCart} = useContext(CartContext);
   const {
     state: {userId},
@@ -49,8 +48,8 @@ const ProductsScreen = ({navigation, route}) => {
 
   const favoritesLoaded = useRef(false);
 
-  const loadData = async () => {
-    await getProducts(userId);
+  const loadData = async () => {  
+    await getCategories(userId);
 
     if (!favoritesLoaded.current) {
       await getFavorites();
@@ -71,12 +70,10 @@ const ProductsScreen = ({navigation, route}) => {
   const [productFilter, setProductFilter] = React.useState(products);
   const renderItem = useCallback(
     ({item}) => (
-      <ProductItem
+      <CategoriesItem
         product={item}
         navigationRoute="ProductDetail"
         ActionIcon={CartIcon}
-        actionTitle="To cart"
-        onActionPress={addToCart}
       />
     ),
     [],
@@ -105,7 +102,7 @@ const ProductsScreen = ({navigation, route}) => {
     );
   }
 
-  if (error.type === NO_PRODUCTS) {
+  if (error.type === NO_CATEGORIES) {
     return (
       <View style={styles.centered}>
         <Icon
@@ -118,29 +115,25 @@ const ProductsScreen = ({navigation, route}) => {
     );
   }
 
-  if (error.type === REQUEST_NETWORK_ERROR && !products.length) {
+  if (error.type === REQUEST_NETWORK_ERROR && !categories.length) {
     return <ErrorScreen errorMessage={error.message} onRetry={loadData} />;
   }
-  //  console.log(products);
+   console.log(products);
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <View style={{flexDirection:'row'}}>
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         onChangeText={(text) => {
           setProductFilter(products.filter((u) => u.title.includes(text)));
         }}
         placeholder="What are you looking for?"
-      />
+      /> */}
       </View>
       <FlatList
         refreshControl={refreshControl()}
-        // data={products}
-        data={listFilter && listFilter.length > 0 ? listFilter : productFilter.length > 0 ? productFilter : products}
-        keyExtractor={(item) => {
-          return 'product' + item.id;
-        }}
+        data={categories}
         contentContainerStyle={styles.list}
         renderItem={renderItem}
       />
@@ -150,7 +143,7 @@ const ProductsScreen = ({navigation, route}) => {
 };
 
 
-export default ProductsScreen;
+export default Category;
 
 const styles = StyleSheet.create({
   container: {

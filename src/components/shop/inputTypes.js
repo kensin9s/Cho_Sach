@@ -1,4 +1,5 @@
 export const SET_TITLE = 'SET_TITLE';
+export const SET_TITLECATEGORY = 'SET_TITLECATEGORY';
 export const SET_IMAGE = 'SET_IMAGE';
 export const SET_CATEGORY = 'SET_CATEGORY';
 export const SET_PRICE = 'SET_PRICE';

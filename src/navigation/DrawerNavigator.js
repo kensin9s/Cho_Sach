@@ -17,9 +17,11 @@ import Icon from '../components/icons/LightIcons';
 import {Colors} from '../constants/Colors';
 import OrdersScreen from '../screens/OrdersScreen';
 import AdminNavigator from './AdminNavigator';
+import CategoryNavigator from './Categorynavigator';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
 import FavoritesNavigator from './FavoritesNavigator';
+import aaa from '../screens/aaa';
 
 const textColor = `rgba(${Colors.text.primary}, 0.7)`;
 const Drawer = createDrawerNavigator();
@@ -87,6 +89,14 @@ const DrawerNavigator = () => {
         component={ProductsNavigator}
         options={{
           title: 'Books Marketplace',
+          drawerIcon: ShopIcon,
+        }}
+      />
+       <Drawer.Screen
+        name="CATEGORY"
+        component={CategoryNavigator}
+        options={{
+          title: 'Category',
           drawerIcon: ShopIcon,
         }}
       />

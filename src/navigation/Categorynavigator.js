@@ -1,8 +1,9 @@
 import React, {useContext, useEffect} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import ProductsScreen from '../screens/ProductsScreen';
+import { useNavigation } from '@react-navigation/native';
+import CategoriesScreen from '../screens/CategoryScreen';
+import aaa from '../screens/aaa';
 import ProductDetailScreen from '../screens/ProductDetailScreen';
 import {Colors} from '../constants/Colors';
 import CartScreen from '../screens/CartScreen';
@@ -11,6 +12,7 @@ import CartIcon from '../components/shop/CartIconComponent';
 import {Context as CartContext} from '../context/cart/CartContext';
 import LeftIcon from '../components/icons/LeftIcon';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
+import Arrow from '../components/icons/Arrow';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +29,7 @@ const screenOptions = {
   },
 };
 
-const ProductsNavigator = () => {
+const CategoryNavigator = () => {
   const {clearCart} = useContext(CartContext);
 
   useEffect(() => {
@@ -35,39 +37,43 @@ const ProductsNavigator = () => {
       clearCart();
     };
   }, []);
+  const { navigate } = useNavigation();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen
-        name="Products"
-        component={ProductsScreen}
+         <Stack.Screen
+        name="aaa"
+        component={aaa}
         options={({navigation}) => ({
-          title: 'Books Market',
-          headerRight: () => (
-            <CartIcon
-              navigation={navigation}
-              color={textPrimaryColor}
-              style={styles.cart}
-            />
-          ),
-          headerRightContainerStyle: styles.rightIcon,
-          headerLeft: () => (
-            <TouchableOpacity onPress={navigation.toggleDrawer}>
-              <FriesOddIcon
+            title: 'Categories',
+            headerRight: () => (
+              <CartIcon
+                navigation={navigation}
+                color={textPrimaryColor}
+                style={styles.cart}
+              />
+            ),
+            headerRightContainerStyle: styles.rightIcon,
+            headerLeft: () => (
+              <TouchableOpacity onPress={navigation.toggleDrawer}>
+               
+               <FriesOddIcon
                 height={52}
                 width={52}
                 weight={1}
                 color={textPrimaryColor}
               />
-            </TouchableOpacity>
-          ),
-          headerLeftContainerStyle: styles.leftIcon,
-        })}
+                
+              </TouchableOpacity>
+            ),
+            headerLeftContainerStyle: styles.leftIcon,
+          })}
+        
       />
-        <Stack.Screen
+     <Stack.Screen
         name="category"
         component={CategoryScreen}
         options={({navigation}) => ({
-          title: 'Books Marketttt',
+          title: 'Love Book',
           headerRight: () => (
             <CartIcon
               navigation={navigation}
@@ -77,13 +83,11 @@ const ProductsNavigator = () => {
           ),
           headerRightContainerStyle: styles.rightIcon,
           headerLeft: () => (
-            <TouchableOpacity onPress={navigation.toggleDrawer}>
-              <FriesOddIcon
-                height={52}
-                width={52}
-                weight={1}
-                color={textPrimaryColor}
-              />
+            <TouchableOpacity onPress={() => { navigate('aaa') }}>
+           
+              <Arrow height={20}
+                  width={20}
+                 />
             </TouchableOpacity>
           ),
           headerLeftContainerStyle: styles.leftIcon,
@@ -118,7 +122,7 @@ const ProductsNavigator = () => {
   );
 };
 
-export default ProductsNavigator;
+export default CategoryNavigator;
 
 const styles = StyleSheet.create({
   backButton: {
