@@ -73,7 +73,7 @@ const CategoryNavigator = () => {
         name="category"
         component={CategoryScreen}
         options={({navigation}) => ({
-          title: 'Love Book',
+          title: 'Categories',
           headerRight: () => (
             <CartIcon
               navigation={navigation}

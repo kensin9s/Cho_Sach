@@ -63,32 +63,7 @@ const ProductsNavigator = () => {
           headerLeftContainerStyle: styles.leftIcon,
         })}
       />
-        <Stack.Screen
-        name="category"
-        component={CategoryScreen}
-        options={({navigation}) => ({
-          title: 'Books Marketttt',
-          headerRight: () => (
-            <CartIcon
-              navigation={navigation}
-              color={textPrimaryColor}
-              style={styles.cart}
-            />
-          ),
-          headerRightContainerStyle: styles.rightIcon,
-          headerLeft: () => (
-            <TouchableOpacity onPress={navigation.toggleDrawer}>
-              <FriesOddIcon
-                height={52}
-                width={52}
-                weight={1}
-                color={textPrimaryColor}
-              />
-            </TouchableOpacity>
-          ),
-          headerLeftContainerStyle: styles.leftIcon,
-        })}
-      />
+        
       <Stack.Screen
         name="ProductDetail"
         component={ProductDetailScreen}

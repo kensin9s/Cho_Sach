@@ -2,28 +2,28 @@ import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-import ProductForm from '../components/shop/ProductForm';
-import {Context as ProductContext} from '../context/product/ProductContext';
+import ProfileForm from '../components/shop/ProfileForm';
+import {Context as ProfileContext} from '../context/Profile/ProfileContext';
 
-const EditProductScreen = ({route}) => {
+const EditProfileScreen = ({route}) => {
   const {
-    state: {products},
-    editProduct,
-  } = useContext(ProductContext);
+    state: {profile},
+    editProfile,
+  } = useContext(ProfileContext);
 
-  const prodId = route.params.prodId;
-  const selectedProduct = products.find(prod => prod.id === prodId);
+  // const prodId = route.params.prodId;
+  const selectedProfile = profile.find(prod => prod.id === prodId);
 
   return (
     <View style={{backgroundColor:'#EEEEEE'}}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
-        <ProductForm
+        <ProfileForm
           submitButtonTitle="Save"
-           product={selectedProduct}
+           product={selectedProfile}
           
           onSubmit={async prodData => {
             try {
-              await editProduct(prodData);
+              await editProfile(prodData);
             } catch (err) {
               throw err;
             }
@@ -34,6 +34,6 @@ const EditProductScreen = ({route}) => {
   );
 };
 
-export default EditProductScreen;
+export default EditProfileScreen;
 
 const styles = StyleSheet.create({});

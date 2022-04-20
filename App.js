@@ -8,6 +8,7 @@ import {Provider as AuthProvider} from './src/context/auth/AuthContext';
 import {Provider as ProductProvider} from './src/context/product/ProductContext';
 import {Provider as CartProvider} from './src/context/cart/CartContext';
 import {Provider as OrdersProvider} from './src/context/orders/OrdersContext';
+import {Provider as ProfileProvider} from './src/context/Profile/ProfileContext';
 import OneSignal from 'react-native-onesignal';
 
 OneSignal.setLogLevel(6, 0);
@@ -27,9 +28,11 @@ const App = () => {
       <AuthProvider>
         <ProductProvider>
           <CartProvider>
-            <OrdersProvider>
-              <RootNavigator />
+            <ProfileProvider>
+              <OrdersProvider>
+                <RootNavigator />
             </OrdersProvider>
+              </ProfileProvider>
           </CartProvider>
         </ProductProvider>
       </AuthProvider>

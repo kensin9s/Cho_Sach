@@ -17,10 +17,13 @@ import Icon from '../components/icons/LightIcons';
 import {Colors} from '../constants/Colors';
 import OrdersScreen from '../screens/OrdersScreen';
 import AdminNavigator from './AdminNavigator';
+import ProfileNavigator from './ProfileNavigator';
+import EditProfilecreen from '../screens/editprofile';
 import CategoryNavigator from './Categorynavigator';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
 import FavoritesNavigator from './FavoritesNavigator';
+
 import aaa from '../screens/aaa';
 
 const textColor = `rgba(${Colors.text.primary}, 0.7)`;
@@ -28,8 +31,10 @@ const Drawer = createDrawerNavigator();
 
 const CartIcon = ({color}) => <Icon name="cart-o" size={20} color={color} />;
 const ShopIcon = ({color}) => <Icon name="shop-o" size={20} color={color} />;
-const userIcon = ({color}) => <Icon name="user-o" size={20} color={color} />;
-const starIcon = ({color}) => <Icon name="star-o" size={20} color={color} />;
+const userIcon = ({color}) => <Icon name="trash-o" size={20} color={color} />;
+const starIcon = ({color}) => <Icon name="heart-o" size={20} color={color} />;
+const ListIcon = ({color}) => <Icon name="menu-o" size={20} color={color} />;
+const AccountIcon = ({color}) => <Icon name="user-o" size={20} color={color} />;
 
 const drawerContentOpts = {
   activeTintColor: `rgb(${Colors.primary})`,
@@ -97,7 +102,7 @@ const DrawerNavigator = () => {
         component={CategoryNavigator}
         options={{
           title: 'Category',
-          drawerIcon: ShopIcon,
+          drawerIcon: ListIcon,
         }}
       />
       <Drawer.Screen
@@ -138,7 +143,17 @@ const DrawerNavigator = () => {
           drawerIcon: userIcon,
         }}
       />
+      <Drawer.Screen
+        name="AccountFlow"
+        component={EditProfilecreen}
+        options={{
+          title: 'Account',
+          drawerIcon: AccountIcon,
+        }}
+      />
     </Drawer.Navigator>
+    
+    
   );
 };
 

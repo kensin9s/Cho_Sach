@@ -11,7 +11,7 @@ const CARD_HEIGHT = 300;
 const shadowOpts = {
   width: 320,
   height: 260,
-  color: '#0f0521',
+  color: '#FF0000',
   border: 33,
   radius: 20,
   opacity: 0.1,

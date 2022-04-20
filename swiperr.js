@@ -52,7 +52,6 @@ const styles = {
 }
 
 export default class extends Component {
-  
   render() {
     return (
       <View style={{height:200,}}>
