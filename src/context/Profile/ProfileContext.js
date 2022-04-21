@@ -113,7 +113,6 @@ const setProfileNavKey = dispatch => key => {
 const getProfile = dispatch => async userId => {
   try {
     const response = await shopApi.get('/profile.json');
-    // console.log('response',response)
     const data = response.data;
     const profile = [];
     for (let key in data) {
@@ -129,6 +128,9 @@ const getProfile = dispatch => async userId => {
       );
     }
     if (profile.length) {
+    console.log('profile',profile)
+    console.log('userId',userId)
+
       dispatch({type: SET_PROFILE, payload: {profile, userId}});
     } else {
       const error = {

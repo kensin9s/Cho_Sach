@@ -1,5 +1,5 @@
 export class Profile {
-    constructor(id,title,ownerId,imageUrl,gender,description) {
+    constructor(id,ownerId,title,imageUrl,gender,description) {
       this.id = id;
       this.ownerId = ownerId;
       this.title = title;

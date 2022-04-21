@@ -147,7 +147,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={title.value}
-        label="Title"
+        label="Name"
         onChangeText={newTxt => dispatch({type: SET_TITLE, payload: newTxt})}
         isValid={title.isValid}
         setIsValid={val => dispatch({type: SET_TITLE_VALIDATION, payload: val})}

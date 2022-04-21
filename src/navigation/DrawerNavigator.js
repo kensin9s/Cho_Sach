@@ -18,7 +18,6 @@ import {Colors} from '../constants/Colors';
 import OrdersScreen from '../screens/OrdersScreen';
 import AdminNavigator from './AdminNavigator';
 import ProfileNavigator from './ProfileNavigator';
-import EditProfilecreen from '../screens/editprofile';
 import CategoryNavigator from './Categorynavigator';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
@@ -145,7 +144,7 @@ const DrawerNavigator = () => {
       />
       <Drawer.Screen
         name="AccountFlow"
-        component={EditProfilecreen}
+        component={ProfileNavigator}
         options={{
           title: 'Account',
           drawerIcon: AccountIcon,

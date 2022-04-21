@@ -2,9 +2,12 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useTheme} from '@react-navigation/native';
+
+import UserProfileScreen from '../screens/UserProfileScreen';
 import Icon from '../components/icons/LightIcons';
-import EditProfilecreen from '../screens/editprofile';
+import EditProfileScreen from '../screens/EditProfileScreen';
 import {Colors} from '../constants/Colors';
+import CreateProfileScreen from '../screens/CreateProfileScreen';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
 import PlusIcon from '../components/icons/PlusIcon';
 import LeftIcon from '../components/icons/LeftIcon';
@@ -27,8 +30,8 @@ const ProfileNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
-        name="Admin"
-        component={EditProfilecreen}
+        name="UserAdmin"
+        component={UserProfileScreen}
         options={({navigation}) => ({
           title: 'My Profile',
           headerLeft: () => (
@@ -42,22 +45,32 @@ const ProfileNavigator = () => {
                 color={colors.text}
               />
             </TouchableOpacity>
-          ),
-          headerRight: () => (
-            <TouchableOpacity
-            //   onPress={() => navigation.navigate('CreateProduct')}
-              >
-              <PlusIcon height={42} width={42} weight={1.3} />
-            </TouchableOpacity>
-          ),
-          headerRightContainerStyle: {
-            marginEnd: 30,
-          },
+          )
         })}
       />
       <Stack.Screen
-        name="EditProduct"
-        component={EditProfilecreen}
+        name="CreateProfile"
+        component={CreateProfileScreen}
+        options={({navigation}) => ({
+          title: 'Information',
+          headerLeft: () => (
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => navigation.goBack()}>
+              <LeftIcon
+                height={42}
+                width={42}
+                weight={1.3}
+                color={`rgb(${Colors.text.primary})`}
+              />
+            </TouchableOpacity>
+          ),
+          headerLeftContainerStyle: styles.leftIcon,
+        })}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
         options={({navigation}) => ({
           title: 'Edit',
           headerLeft: () => (

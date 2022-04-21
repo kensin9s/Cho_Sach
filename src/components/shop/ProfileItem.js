@@ -6,7 +6,7 @@ import {BoxShadow} from 'react-native-shadow';
 import {Colors} from '../../constants/Colors';
 import ActionButton from './ActionButton';
 
-const CARD_HEIGHT = 300;
+const CARD_HEIGHT = 600;
 
 const shadowOpts = {
   width: 320,
@@ -53,25 +53,27 @@ const ProfileItem = ({
     }
     onActionPress(profile);
   }, [profile, params]);
-
+console.log(profile.title);
   return (
     <BoxShadow setting={shadowOpts}>
-      <TouchableOpacity activeOpacity={0.8} onPress={onItemPress}>
+      <TouchableOpacity  activeOpacity={0.8} onPress={onItemPress}>
         <View style={styles.contentContainer}>
-          <Image style={[styles.image]} source={{uri: profile.image}} />
+          <Image style={[styles.image]} source={{uri: profile.imageUrl}} />
           <View style={styles.infoSection}>
             <View style={styles.details}>
-              <Text style={styles.title}>{profile.title}</Text>
+              <Text style={styles.price}>Name :  {profile.title}</Text>
+              <Text style={styles.title}>Gender :  {profile.gender}</Text>
+              <Text style={styles.title}>Description :  {profile.description}</Text>
             </View>
             
-            {!hideActionButton && (
+            {/* {!hideActionButton && (
               <ActionButton
                 title={actionTitle}
                 Icon={ActionIcon}
                 onPress={actionPressHandler}
                 prodId={profile.id}
               />
-            )}
+            )} */}
           </View>
         </View>
       </TouchableOpacity>
@@ -88,13 +90,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     overflow: 'hidden',
-    flexDirection: 'row',
+    // flexDirection: 'row',
+    alignSelf:'center',
     paddingLeft: 20,
     paddingVertical: 20,
   },
   image: {
     flex: 5,
     borderRadius: 10,
+    width:300,
+    alignSelf:'center',
+    marginTop:20
   },
   infoSection: {
     flex: 3,
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular',
     fontSize: 20,
     color: `rgb(${Colors.text.primary})`,
-    marginBottom: 8,
+    marginTop: 10,
   },
   price: {
     fontFamily: 'Lato-Black',
