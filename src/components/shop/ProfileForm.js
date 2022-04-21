@@ -8,8 +8,13 @@ import LabledInput from './LabledInput';
 import {
   SET_TITLE,
   SET_IMAGE,
+  SET_GENDER,
+  SET_DESCRIPTION,
+
   SET_TITLE_VALIDATION,
   SET_IMAGE_VALIDATION,
+  SET_GENDER_VALIDATION,
+  SET_DESCRIPTION_VALIDATION,
 } from './inputTypes';
 import ErrorModal from './ErrorModal';
 import FormSubmitButton from './FormSubmitButton';
@@ -24,11 +29,24 @@ const reducer = (state, {type, payload}) => {
     case SET_IMAGE: {
       return {...state, imageUrl: {...state.imageUrl, value: payload}};
     }
+    case SET_GENDER: {
+      return {...state, gender: {...state.gender, value: payload}};
+    }
+    case SET_DESCRIPTION: {
+      return {...state, description: {...state.description, value: payload}};
+    }
+    
     case SET_TITLE_VALIDATION: {
       return {...state, title: {...state.title, isValid: payload}};
     }
     case SET_IMAGE_VALIDATION: {
       return {...state, imageUrl: {...state.imageUrl, isValid: payload}};
+    }
+    case SET_GENDER_VALIDATION: {
+      return {...state, gender: {...state.gender, isValid: payload}};
+    }
+    case SET_DESCRIPTION_VALIDATION: {
+      return {...state, description: {...state.description,isValid: payload}};
     }
 
     default:
@@ -40,10 +58,11 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
   const initialFormState = {
     title: {value: profile?.title, isValid: profile ? true : false},
     imageUrl: {value: profile?.imageUrl, isValid: profile ? true : false},
-    
+    gender: {value: profile?.gender, isValid: profile ? true : false},
+    description: {value: profile?.description, isValid: profile ? true : false},   
   };
 
-  const [{title, imageUrl,}, dispatch] = useReducer(
+  const [{title, imageUrl,gender,description}, dispatch] = useReducer(
     reducer,
     initialFormState,
   );
@@ -61,8 +80,12 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
     if (
       title.value &&
       imageUrl.value &&
+      gender.value &&
+      description.value &&
       title.isValid &&
-      imageUrl.isValid 
+      imageUrl.isValid &&
+      gender.isValid &&
+      description.isValid  
     ) {
       setFormIsValid(true);
     } else {
@@ -71,8 +94,12 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
   }, [
     title.value,
     imageUrl.value,
+    gender.value,
+    description.value,
     title.isValid,
     imageUrl.isValid,
+    gender.isValid,
+    description.isValid,
     formIsValid,
   ]);
 
@@ -82,11 +109,15 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         ownerId: profile.ownerId,
         title: title.value,
         imageUrl: imageUrl.value,
+        gender: gender.value,
+        description: description.value,
       }
     : {
         ownerId: userId,
         title: title.value,
         imageUrl: imageUrl.value,
+        gender: gender.value,
+        description: description.value,
       };
 
   const formSubmitHandler = async () => {
@@ -131,6 +162,26 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         isValid={imageUrl.isValid}
         setIsValid={val => dispatch({type: SET_IMAGE_VALIDATION, payload: val})}
       />
+        <LabledInput
+        required
+        autoCapitalize="sentences"
+        value={gender.value}
+        label="Gender"
+        onChangeText={newTxt => dispatch({type: SET_GENDER, payload: newTxt})}
+        isValid={gender.isValid}
+        setIsValid={val => dispatch({type: SET_GENDER_VALIDATION, payload: val})}
+      />
+ 
+      <LabledInput
+        required
+        autoCapitalize="sentences"
+        value={description.value}
+        label="Description"
+        onChangeText={newTxt => dispatch({type: SET_DESCRIPTION, payload: newTxt})}
+        isValid={description.isValid}
+        setIsValid={val => dispatch({type: SET_DESCRIPTION_VALIDATION, payload: val})}
+      />
+ 
       <FormSubmitButton
         shallowAppearance={!formIsValid}
         disabled={!formIsValid || actionDisabled}

@@ -1,6 +1,7 @@
 import createDataContext from '../createDataContext';
 import shopApi from '../../api/shopApi';
 import {
+  CREATE_PROFILE,
   EDIT_PROFILE,
   SET_NAV_PROFILEKEY,
   SET_PROFILE,
@@ -8,7 +9,7 @@ import {
   REQUEST_NETWORK_ERROR,
   NO_PROFILE,
 } from './types';
-import {Profile} from '../../models/ProfileItem';
+import {Profile} from '../../models/Profile';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
@@ -33,6 +34,13 @@ const profileReducer = (state, {type, payload}) => {
 
     case SET_ERROR_MESSAGE: {
       return {...state, error: payload};
+    }
+    case CREATE_PROFILE: {
+      return {
+        ...state,
+        profile: [...state.profile, payload],
+        userProfile: [...state.userProfile, payload],
+      };
     }
     case EDIT_PROFILE: {
       {
@@ -59,19 +67,38 @@ const profileReducer = (state, {type, payload}) => {
   }
 };
 
+const createProfile = dispatch => async prodData => {
+  try {
+    const response = await shopApi.post('/profile.json', {...prodData});
+    const profile = new Profile(
+      response.data.name,
+      prodData.ownerId,
+      prodData.title,
+      prodData.imageUrl,
+      prodData.gender,
+      prodData.description,
+    );
+    dispatch({type: CREATE_PROFILE, payload: profile});
+  } catch (err) {
+    throw err;
+  }
+};
 
 const editProfile = dispatch => async prodData => {
   const profile = new Profile(
     prodData.id,
     prodData.ownerId,
     prodData.title,
-    prodData.image,
+    prodData.imageUrl,
+    prodData.gender,
+    prodData.description,
   );
   try {
-    console.log(prodData.price);
     await shopApi.patch(`/profile/${profile.id}.json`, {
       title: prodData.title,
-      image: prodData.image,
+      imageUrl: prodData.imageUrl,
+      gender: prodData.gender,
+      description: prodData.description,
      });
     dispatch({type: EDIT_PROFILE, payload: profile});
   } catch (err) {
@@ -95,7 +122,9 @@ const getProfile = dispatch => async userId => {
           key,
           data[key].ownerId,
           data[key].title,
-          data[key].image,
+          data[key].imageUrl,
+          data[key].gender,
+          data[key].description,
         ),
       );
     }
@@ -131,6 +160,7 @@ export const {Context, Provider} = createDataContext(
   profileReducer,
   initialState,
   {
+    createProfile,
     editProfile,
     setProfileNavKey,
     getProfile,

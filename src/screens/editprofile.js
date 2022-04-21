@@ -2,28 +2,21 @@ import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-import ProfileForm from '../components/shop/ProfileForm';
 import {Context as ProfileContext} from '../context/Profile/ProfileContext';
+import ProfileForm from '../components/shop/ProfileForm';
+import {Colors} from '../constants/Colors';
 
-const EditProfileScreen = ({route}) => {
-  const {
-    state: {profile},
-    editProfile,
-  } = useContext(ProfileContext);
-
-  // const prodId = route.params.prodId;
-  const selectedProfile = profile.find(prod => prod.id === prodId);
+const CreateProfileScreen = () => {
+  const {createProfile} = useContext(ProfileContext);
 
   return (
-    <View style={{backgroundColor:'#EEEEEE'}}>
+    <View style={styles.container}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <ProfileForm
-          submitButtonTitle="Save"
-           product={selectedProfile}
-          
+          submitButtonTitle="Create Profile"
           onSubmit={async prodData => {
             try {
-              await editProfile(prodData);
+              await createProfile(prodData);
             } catch (err) {
               throw err;
             }
@@ -34,6 +27,16 @@ const EditProfileScreen = ({route}) => {
   );
 };
 
-export default EditProfileScreen;
+export default CreateProfileScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  
+  },
+  screenTitle: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 24,
+    color: `rgb(${Colors.text.primary})`,
+  },
+});
