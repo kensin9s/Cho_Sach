@@ -13,6 +13,7 @@ import PlusIcon from '../components/icons/PlusIcon';
 import LeftIcon from '../components/icons/LeftIcon';
 
 const Stack = createStackNavigator();
+
 const screenOptions = {
   headerTitleStyle: {
     fontFamily: 'Lato-Black',
@@ -20,7 +21,7 @@ const screenOptions = {
     marginLeft: 20,
   },
   headerStyle: {
-    height: 120,
+    height: 100,
   },
 };
 
@@ -28,7 +29,7 @@ const AdminNavigator = () => {
   const {colors} = useTheme();
 
   return (
-    <Stack.Navigator screenOptions={screenOptions}>
+    <Stack.Navigator  screenOptions={screenOptions}>
       <Stack.Screen
         name="Admin"
         component={UserProductsScreen}

@@ -6,11 +6,11 @@ import {BoxShadow} from 'react-native-shadow';
 import {Colors} from '../../constants/Colors';
 import ActionButton from './ActionButton';
 
-const CARD_HEIGHT = 300;
+const CARD_HEIGHT = 250;
 
 const shadowOpts = {
   width: 320,
-  height: 260,
+  height: 220,
   color: '#FF0000',
   border: 33,
   radius: 20,

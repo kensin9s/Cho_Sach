@@ -25,7 +25,7 @@ const screenOptions = {
     marginLeft: 20,
   },
   headerStyle: {
-    height: 120,
+    height: 100,
   },
 };
 

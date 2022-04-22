@@ -10,11 +10,12 @@ import {
   SET_IMAGE,
   SET_GENDER,
   SET_DESCRIPTION,
-
+  SET_EMAILS,
   SET_TITLE_VALIDATION,
   SET_IMAGE_VALIDATION,
   SET_GENDER_VALIDATION,
   SET_DESCRIPTION_VALIDATION,
+  SET_EMAILS_VALIDATION,
 } from './inputTypes';
 import ErrorModal from './ErrorModal';
 import FormSubmitButton from './FormSubmitButton';
@@ -35,7 +36,9 @@ const reducer = (state, {type, payload}) => {
     case SET_DESCRIPTION: {
       return {...state, description: {...state.description, value: payload}};
     }
-    
+    case SET_EMAILS: {
+      return {...state, emails: {...state.emails, value: payload}};
+    }
     case SET_TITLE_VALIDATION: {
       return {...state, title: {...state.title, isValid: payload}};
     }
@@ -47,6 +50,9 @@ const reducer = (state, {type, payload}) => {
     }
     case SET_DESCRIPTION_VALIDATION: {
       return {...state, description: {...state.description,isValid: payload}};
+    }
+    case SET_EMAILS_VALIDATION: {
+      return {...state, emails: {...state.emails, isValid: payload}};
     }
 
     default:
@@ -60,9 +66,10 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
     imageUrl: {value: profile?.imageUrl, isValid: profile ? true : false},
     gender: {value: profile?.gender, isValid: profile ? true : false},
     description: {value: profile?.description, isValid: profile ? true : false},   
+    emails: {value: profile?.emails, isValid: profile ? true : false},
   };
 
-  const [{title, imageUrl,gender,description}, dispatch] = useReducer(
+  const [{title, imageUrl,gender,description,emails}, dispatch] = useReducer(
     reducer,
     initialFormState,
   );
@@ -82,10 +89,12 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
       imageUrl.value &&
       gender.value &&
       description.value &&
+      emails.value &&
       title.isValid &&
       imageUrl.isValid &&
       gender.isValid &&
-      description.isValid  
+      description.isValid&&
+      emails.isValid   
     ) {
       setFormIsValid(true);
     } else {
@@ -96,10 +105,12 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
     imageUrl.value,
     gender.value,
     description.value,
+    emails.value,
     title.isValid,
     imageUrl.isValid,
     gender.isValid,
     description.isValid,
+    emails.isValid,
     formIsValid,
   ]);
 
@@ -111,6 +122,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         imageUrl: imageUrl.value,
         gender: gender.value,
         description: description.value,
+        emails: emails.value,
       }
     : {
         ownerId: userId,
@@ -118,6 +130,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         imageUrl: imageUrl.value,
         gender: gender.value,
         description: description.value,
+        emails: emails.value,
       };
 
   const formSubmitHandler = async () => {
@@ -180,6 +193,15 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         onChangeText={newTxt => dispatch({type: SET_DESCRIPTION, payload: newTxt})}
         isValid={description.isValid}
         setIsValid={val => dispatch({type: SET_DESCRIPTION_VALIDATION, payload: val})}
+      />
+         <LabledInput
+        required
+        autoCapitalize="sentences"
+        value={emails.value}
+        label="Email"
+        onChangeText={newTxt => dispatch({type: SET_EMAILS, payload: newTxt})}
+        isValid={emails.isValid}
+        setIsValid={val => dispatch({type: SET_EMAILS_VALIDATION, payload: val})}
       />
  
       <FormSubmitButton

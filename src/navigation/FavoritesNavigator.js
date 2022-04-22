@@ -17,7 +17,7 @@ const screenOpts = {
     marginLeft: 20,
   },
   headerStyle: {
-    height: 120,
+    height: 100,
   },
 };
 const textColor = `rgba(${Colors.text.primary}, 0.7)`;

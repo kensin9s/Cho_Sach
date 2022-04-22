@@ -10,7 +10,7 @@ const CARD_HEIGHT = 600;
 
 const shadowOpts = {
   width: 320,
-  height: 260,
+  height: 600,
   color: '#FF0000',
   border: 33,
   radius: 20,
@@ -25,6 +25,7 @@ const shadowOpts = {
     marginBottom: 30,
     marginHorizontal: 30,
     marginLeft: 30,
+    
   },
 };
 
@@ -64,6 +65,7 @@ console.log(profile.title);
               <Text style={styles.price}>Name :  {profile.title}</Text>
               <Text style={styles.title}>Gender :  {profile.gender}</Text>
               <Text style={styles.title}>Description :  {profile.description}</Text>
+              <Text style={styles.title}>Email :  {profile.emails}</Text>
             </View>
             
             {/* {!hideActionButton && (
@@ -94,6 +96,9 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     paddingLeft: 20,
     paddingVertical: 20,
+    marginRight:20,
+    marginTop:20,
+
   },
   image: {
     flex: 5,

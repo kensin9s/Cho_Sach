@@ -10,7 +10,7 @@ import Icon from '../components/icons/LightIcons';
 
 const textSecondaryColor = `rgba(${Colors.text.secondary}, 0.7)`;
 const DeleteIcon = () => <Icon name="trash-o" size={20} color="white" />;
-
+const ShopIcon = ({color}) => <Icon name="shop-o" size={20} color={color} />;
 const UserProductsScreen = ({navigation}) => {
   const {
     state: {userProducts, productsNavKey},
