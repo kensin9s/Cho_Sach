@@ -78,6 +78,7 @@ const createProfile = dispatch => async prodData => {
       prodData.gender,
       prodData.description,
       prodData.emails,
+      prodData.phone,
     );
     dispatch({type: CREATE_PROFILE, payload: profile});
   } catch (err) {
@@ -94,6 +95,7 @@ const editProfile = dispatch => async prodData => {
     prodData.gender,
     prodData.description,
     prodData.emails,
+    prodData.phone,
   );
   try {
     await shopApi.patch(`/profile/${profile.id}.json`, {
@@ -102,6 +104,7 @@ const editProfile = dispatch => async prodData => {
       gender: prodData.gender,
       description: prodData.description,
       emails: prodData.emails,
+      phone: prodData.phone,
      });
     dispatch({type: EDIT_PROFILE, payload: profile});
   } catch (err) {
@@ -128,6 +131,7 @@ const getProfile = dispatch => async userId => {
           data[key].gender,
           data[key].description,
           data[key].emails,
+          data[key].phone,
         ),
       );
     }

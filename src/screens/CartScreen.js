@@ -11,6 +11,7 @@ import {Colors} from '../constants/Colors';
 import ErrorModal from '../components/shop/ErrorModal';
 import {useSharedValue} from 'react-native-reanimated';
 import Icon from '../components/icons/LightIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const planeIcon = () => <Icon name="plane-o" color="white" size={20} />;
 
@@ -78,7 +79,8 @@ const CartScreen = ({navigation}) => {
         label="Total amount"
         amount={totalAmount}
         Icon={planeIcon}
-        onActionPress={handleOrderPress}
+         onActionPress={handleOrderPress}
+        // onPress={() => { navigate('OrderInforScreen') }}
         actionEnabled={Object.values(items).length}
       />
       {alert && (

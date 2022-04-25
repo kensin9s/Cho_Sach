@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {BoxShadow} from 'react-native-shadow';
-
+import Icon from '../../components/icons/LightIcons';
 import {Colors} from '../../constants/Colors';
 import ActionButton from './ActionButton';
 
@@ -57,15 +57,21 @@ const ProfileItem = ({
 console.log(profile.title);
   return (
     <BoxShadow setting={shadowOpts}>
-      <TouchableOpacity  activeOpacity={0.8} onPress={onItemPress}>
+      
         <View style={styles.contentContainer}>
           <Image style={[styles.image]} source={{uri: profile.imageUrl}} />
           <View style={styles.infoSection}>
             <View style={styles.details}>
+              <View style={{flexDirection:'row'}}>
               <Text style={styles.price}>Name :  {profile.title}</Text>
+              <TouchableOpacity  style={{alignSelf:'center',marginLeft:50}} onPress={onItemPress}>
+              <Icon name="gear-o" size={30} color={'black'} style={{alignSelf:'center',}} />
+              </TouchableOpacity>
+              </View>
               <Text style={styles.title}>Gender :  {profile.gender}</Text>
-              <Text style={styles.title}>Description :  {profile.description}</Text>
+              <Text style={styles.title}>Ađdress :  {profile.description}</Text>
               <Text style={styles.title}>Email :  {profile.emails}</Text>
+              <Text style={styles.title}>Phone :  {profile.phone}</Text>
             </View>
             
             {/* {!hideActionButton && (
@@ -78,7 +84,7 @@ console.log(profile.title);
             )} */}
           </View>
         </View>
-      </TouchableOpacity>
+      
     </BoxShadow>
   );
 };
@@ -124,7 +130,8 @@ const styles = StyleSheet.create({
   },
   price: {
     fontFamily: 'Lato-Black',
-    fontSize: 24,
+    fontSize: 22,
     color: `rgb(${Colors.text.primary})`,
+    width:200,
   },
 });

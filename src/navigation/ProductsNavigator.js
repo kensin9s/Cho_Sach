@@ -11,6 +11,7 @@ import CartIcon from '../components/shop/CartIconComponent';
 import {Context as CartContext} from '../context/cart/CartContext';
 import LeftIcon from '../components/icons/LeftIcon';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
+import OrderinforNavigation from '../navigation/OrderinforNavigator';
 
 const Stack = createStackNavigator();
 

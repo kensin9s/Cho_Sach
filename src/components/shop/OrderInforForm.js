@@ -7,17 +7,13 @@ import {Colors} from '../../constants/Colors';
 import LabledInput from './LabledInput';
 import {
   SET_TITLE,
-  SET_IMAGE,
-  SET_GENDER,
-  SET_DESCRIPTION,
-  SET_EMAILS,
+  SET_ADDRESS,
   SET_PHONE,
+  SET_DESCRIPTION,
   SET_TITLE_VALIDATION,
-  SET_IMAGE_VALIDATION,
-  SET_GENDER_VALIDATION,
-  SET_DESCRIPTION_VALIDATION,
-  SET_EMAILS_VALIDATION,
+  SET_ADDRESS_VALIDATION,
   SET_PHONE_VALIDATION,
+  SET_DESCRIPTION_VALIDATION,
 } from './inputTypes';
 import ErrorModal from './ErrorModal';
 import FormSubmitButton from './FormSubmitButton';
@@ -29,38 +25,26 @@ const reducer = (state, {type, payload}) => {
     case SET_TITLE: {
       return {...state, title: {...state.title, value: payload}};
     }
-    case SET_IMAGE: {
-      return {...state, imageUrl: {...state.imageUrl, value: payload}};
-    }
-    case SET_GENDER: {
-      return {...state, gender: {...state.gender, value: payload}};
-    }
-    case SET_DESCRIPTION: {
-      return {...state, description: {...state.description, value: payload}};
-    }
-    case SET_EMAILS: {
-      return {...state, emails: {...state.emails, value: payload}};
+    case SET_ADDRESS: {
+      return {...state, address: {...state.address, value: payload}};
     }
     case SET_PHONE: {
       return {...state, phone: {...state.phone, value: payload}};
     }
+    case SET_DESCRIPTION: {
+      return {...state, description: {...state.description, value: payload}};
+    }
     case SET_TITLE_VALIDATION: {
       return {...state, title: {...state.title, isValid: payload}};
     }
-    case SET_IMAGE_VALIDATION: {
-      return {...state, imageUrl: {...state.imageUrl, isValid: payload}};
+    case SET_ADDRESS_VALIDATION: {
+      return {...state, address: {...state.address, isValid: payload}};
     }
-    case SET_GENDER_VALIDATION: {
-      return {...state, gender: {...state.gender, isValid: payload}};
+    case SET_PHONE: {
+      return {...state, phone: {...state.phone, isValid: payload}};
     }
     case SET_DESCRIPTION_VALIDATION: {
       return {...state, description: {...state.description,isValid: payload}};
-    }
-    case SET_EMAILS_VALIDATION: {
-      return {...state, emails: {...state.emails, isValid: payload}};
-    }
-    case SET_PHONE_VALIDATION: {
-      return {...state, phone: {...state.phone, isValid: payload}};
     }
 
     default:
@@ -68,17 +52,15 @@ const reducer = (state, {type, payload}) => {
   }
 };
 
-const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
+const OrderifForm = ({submitButtonTitle, orderif, onSubmit}) => {
   const initialFormState = {
-    title: {value: profile?.title, isValid: profile ? true : false},
-    imageUrl: {value: profile?.imageUrl, isValid: profile ? true : false},
-    gender: {value: profile?.gender, isValid: profile ? true : false},
-    description: {value: profile?.description, isValid: profile ? true : false},   
-    emails: {value: profile?.emails, isValid: profile ? true : false},
-    phone: {value: profile?.phone, isValid: profile ? true : false},
+    title: {value: orderif?.title, isValid: orderif ? true : false},
+    address: {value: orderif?.address, isValid: orderif ? true : false},
+    phone: {value: orderif?.phone, isValid: orderif ? true : false},
+    description: {value: orderif?.description, isValid: orderif ? true : false},   
   };
 
-  const [{title, imageUrl,gender,description,emails,phone}, dispatch] = useReducer(
+  const [{title, address,phone,description}, dispatch] = useReducer(
     reducer,
     initialFormState,
   );
@@ -95,17 +77,13 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
   useEffect(() => {
     if (
       title.value &&
-      imageUrl.value &&
-      gender.value &&
-      description.value &&
-      emails.value &&
+      address.value &&
       phone.value &&
+      description.value &&
       title.isValid &&
-      imageUrl.isValid &&
-      gender.isValid &&
-      description.isValid&&
-      emails.isValid&&
-      phone.isValid     
+      address.isValid &&
+      phone.isValid &&
+      description.isValid
     ) {
       setFormIsValid(true);
     } else {
@@ -113,39 +91,31 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
     }
   }, [
     title.value,
-    imageUrl.value,
-    gender.value,
-    description.value,
-    emails.value,
+    address.value,
     phone.value,
+    description.value,
     title.isValid,
-    imageUrl.isValid,
-    gender.isValid,
-    description.isValid,
-    emails.isValid,
+    address.isValid,
     phone.isValid,
+    description.isValid,
     formIsValid,
   ]);
 
-  const prodData = profile
+  const prodData = orderif
     ? {
-        id: profile.id,
-        ownerId: profile.ownerId,
+        id: orderif.id,
+        ownerId: orderif.ownerId,
         title: title.value,
-        imageUrl: imageUrl.value,
-        gender: gender.value,
-        description: description.value,
-        emails: emails.value,
+        address: address.value,
         phone: phone.value,
+        description: description.value,
       }
     : {
         ownerId: userId,
         title: title.value,
-        imageUrl: imageUrl.value,
-        gender: gender.value,
-        description: description.value,
-        emails: emails.value,
+        address: address.value,
         phone: phone.value,
+        description: description.value,
       };
 
   const formSubmitHandler = async () => {
@@ -184,51 +154,31 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
       <LabledInput
         required
         autoCapitalize="none"
-        value={imageUrl.value}
-        label="Image URL"
-        onChangeText={newTxt => dispatch({type: SET_IMAGE, payload: newTxt})}
-        isValid={imageUrl.isValid}
-        setIsValid={val => dispatch({type: SET_IMAGE_VALIDATION, payload: val})}
+        value={address.value}
+        label="ADDRESS"
+        onChangeText={newTxt => dispatch({type: SET_ADDRESS, payload: newTxt})}
+        isValid={address.isValid}
+        setIsValid={val => dispatch({type: SET_ADDRESS_VALIDATION, payload: val})}
       />
         <LabledInput
         required
         autoCapitalize="sentences"
-        value={gender.value}
+        value={phone.value}
         label="Gender"
-        onChangeText={newTxt => dispatch({type: SET_GENDER, payload: newTxt})}
-        isValid={gender.isValid}
-        setIsValid={val => dispatch({type: SET_GENDER_VALIDATION, payload: val})}
+        onChangeText={newTxt => dispatch({type: SET_PHONE, payload: newTxt})}
+        isValid={phone.isValid}
+        setIsValid={val => dispatch({type: SET_PHONE_VALIDATION, payload: val})}
       />
  
       <LabledInput
         required
         autoCapitalize="sentences"
         value={description.value}
-        label="ADDRESS"
+        label="Description"
         onChangeText={newTxt => dispatch({type: SET_DESCRIPTION, payload: newTxt})}
         isValid={description.isValid}
         setIsValid={val => dispatch({type: SET_DESCRIPTION_VALIDATION, payload: val})}
       />
-         <LabledInput
-        required
-        autoCapitalize="sentences"
-        value={emails.value}
-        label="Email"
-        onChangeText={newTxt => dispatch({type: SET_EMAILS, payload: newTxt})}
-        isValid={emails.isValid}
-        setIsValid={val => dispatch({type: SET_EMAILS_VALIDATION, payload: val})}
-      />
-       <LabledInput
-        required
-        autoCapitalize="sentences"
-        value={phone.value}
-        label="Phone Number"
-        onChangeText={newTxt => dispatch({type: SET_PHONE, payload: newTxt})}
-        isValid={phone.isValid}
-        setIsValid={val => dispatch({type: SET_PHONE_VALIDATION, payload: val})}
-      />
- 
- 
       <FormSubmitButton
         shallowAppearance={!formIsValid}
         disabled={!formIsValid || actionDisabled}
@@ -254,7 +204,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
   );
 };
 
-export default ProductForm;
+export default OrderifForm;
 
 const styles = StyleSheet.create({
   form: {
