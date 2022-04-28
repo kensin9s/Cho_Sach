@@ -62,6 +62,7 @@ const filterListbyCateThieuNhi = () => {
 
   return (
     <SafeAreaView>
+
        <View style={{height:200,borderRadius:10}}>
         <Swiper  autoplayTimeout={5} autoplay
           style={styles.wrapper}
@@ -193,6 +194,7 @@ const filterListbyCateThieuNhi = () => {
 <Text style={{color:'white',alignSelf:'center',marginTop:10}}>Tình cảm</Text>
     </TouchableOpacity> */}
 </View >
+<Text style={{fontWeight:'bold',fontSize:25,fontFamily:'serif',marginLeft:20,}}>What genre do you like?</Text>
 <View style={{flexDirection:'row'}}>
 <TouchableOpacity style={styles.touch1}>
             <Text style={styles.title}>Tình cảm</Text>    

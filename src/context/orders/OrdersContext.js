@@ -25,6 +25,7 @@ const ordersReducer = (state, {type, payload}) => {
 const addOrder = dispatch => async (cartItems, totalAmount, userId) => {
   const date = new Date();
   try {
+    console.log(userId);
     const response = await shopApi.post(`/orders/${userId}.json`, {
       cartItems,
       totalAmount,

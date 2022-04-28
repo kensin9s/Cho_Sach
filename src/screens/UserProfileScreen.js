@@ -27,7 +27,7 @@ const UserProfileScreen = ({navigation}) => {
   }
   useEffect(() => {
     loadProfile()
-  console.log('userProfile',userProfile)
+   console.log('userProfile',userProfile)
 
   }, [])
   useEffect(() => {

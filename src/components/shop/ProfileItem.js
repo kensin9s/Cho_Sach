@@ -6,11 +6,11 @@ import Icon from '../../components/icons/LightIcons';
 import {Colors} from '../../constants/Colors';
 import ActionButton from './ActionButton';
 
-const CARD_HEIGHT = 600;
+const CARD_HEIGHT = 630;
 
 const shadowOpts = {
   width: 320,
-  height: 600,
+  height: 640,
   color: '#FF0000',
   border: 33,
   radius: 20,
@@ -54,25 +54,31 @@ const ProfileItem = ({
     }
     onActionPress(profile);
   }, [profile, params]);
-console.log(profile.title);
+// console.log(profile.title);
   return (
     <BoxShadow setting={shadowOpts}>
       
         <View style={styles.contentContainer}>
-          <Image style={[styles.image]} source={{uri: profile.imageUrl}} />
+          <Image style={styles.image} source={{uri: profile.imageUrl}} />
           <View style={styles.infoSection}>
-            <View style={styles.details}>
-              <View style={{flexDirection:'row'}}>
+            <View style={styles.details}> 
               <Text style={styles.price}>Name :  {profile.title}</Text>
-              <TouchableOpacity  style={{alignSelf:'center',marginLeft:50}} onPress={onItemPress}>
-              <Icon name="gear-o" size={30} color={'black'} style={{alignSelf:'center',}} />
-              </TouchableOpacity>
-              </View>
               <Text style={styles.title}>Gender :  {profile.gender}</Text>
               <Text style={styles.title}>Ađdress :  {profile.description}</Text>
               <Text style={styles.title}>Email :  {profile.emails}</Text>
               <Text style={styles.title}>Phone :  {profile.phone}</Text>
+         
             </View>
+            
+              
+              <View style={{flexDirection:'row'}}>
+              <TouchableOpacity onPress={onItemPress} style={{flexDirection:'row'}}>
+              <Icon name="gear-o" size={30} color={'#3333FF'}  />
+              <Text style={styles.titleProfile}>EditProfile</Text>
+              </TouchableOpacity>
+              </View>
+             
+         
             
             {/* {!hideActionButton && (
               <ActionButton
@@ -107,14 +113,14 @@ const styles = StyleSheet.create({
 
   },
   image: {
-    flex: 5,
+    flex: 2,
     borderRadius: 10,
     width:300,
     alignSelf:'center',
     marginTop:20
   },
   infoSection: {
-    flex: 3,
+    flex: 2,
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
@@ -127,6 +133,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: `rgb(${Colors.text.primary})`,
     marginTop: 10,
+  },
+  titleProfile: {
+    fontFamily: 'Lato-Black',
+    fontSize: 20,
+    color: `#3333FF`,
   },
   price: {
     fontFamily: 'Lato-Black',

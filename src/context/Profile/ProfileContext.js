@@ -67,7 +67,7 @@ const profileReducer = (state, {type, payload}) => {
   }
 };
 
-const createProfile = dispatch => async prodData => {
+const createProfile = dispatch => async prodData => {  
   try {
     const response = await shopApi.post('/profile.json', {...prodData});
     const profile = new Profile(
@@ -136,8 +136,8 @@ const getProfile = dispatch => async userId => {
       );
     }
     if (profile.length) {
-    console.log('profile',profile)
-    console.log('userId',userId)
+    // console.log('profile',profile)
+    // console.log('userId',userId)
 
       dispatch({type: SET_PROFILE, payload: {profile, userId}});
     } else {

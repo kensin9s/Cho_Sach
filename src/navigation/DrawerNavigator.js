@@ -88,6 +88,15 @@ const DrawerNavigator = () => {
       edgeWidth={drawerEdgeWidth}
       drawerContentOptions={drawerContentOpts}
       screenOptions={screenOpts}>
+         <Drawer.Screen
+        name="CATEGORY"
+        component={CategoryNavigator}
+        options={{
+          title: 'Category',
+          drawerIcon: ListIcon,
+        }}
+      />
+
       <Drawer.Screen
         name="ProductsFlow"
         component={ProductsNavigator}
@@ -96,14 +105,7 @@ const DrawerNavigator = () => {
           drawerIcon: ShopIcon,
         }}
       />
-       <Drawer.Screen
-        name="CATEGORY"
-        component={CategoryNavigator}
-        options={{
-          title: 'Category',
-          drawerIcon: ListIcon,
-        }}
-      />
+      
       <Drawer.Screen
         name="Orders"
         component={OrdersScreen}
