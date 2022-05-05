@@ -62,7 +62,7 @@ const filterListbyCateThieuNhi = () => {
 
   return (
     <SafeAreaView>
-
+<Text style={{fontWeight:'bold',fontSize:30,fontFamily:'serif',marginLeft:20,}}>Welcome{'\n'} Back!</Text>
        <View style={{height:200,borderRadius:10}}>
         <Swiper  autoplayTimeout={5} autoplay
           style={styles.wrapper}

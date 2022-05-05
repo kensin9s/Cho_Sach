@@ -13,7 +13,7 @@ import {Context as CartContext} from '../context/cart/CartContext';
 import LeftIcon from '../components/icons/LeftIcon';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
 import Arrow from '../components/icons/Arrow';
-
+import AddressNavigator from './AddressNavigator';
 const Stack = createStackNavigator();
 
 const textPrimaryColor = `rgb(${Colors.text.primary})`;
@@ -45,13 +45,13 @@ const CategoryNavigator = () => {
         component={aaa}
         options={({navigation}) => ({
             title: 'Categories',
-            headerRight: () => (
-              <CartIcon
-                navigation={navigation}
-                color={textPrimaryColor}
-                style={styles.cart}
-              />
-            ),
+            // headerRight: () => (
+            //   <CartIcon
+            //     navigation={navigation}
+            //     color={textPrimaryColor}
+            //     style={styles.cart}
+            //   />
+            // ),
             headerRightContainerStyle: styles.rightIcon,
             headerLeft: () => (
               <TouchableOpacity onPress={navigation.toggleDrawer}>
@@ -108,7 +108,7 @@ const CategoryNavigator = () => {
             <TouchableOpacity
               style={styles.backButton}
               onPress={navigation.goBack}>
-              <LeftIcon
+                     <LeftIcon
                 height={42}
                 width={42}
                 weight={1.3}
@@ -117,6 +117,14 @@ const CategoryNavigator = () => {
             </TouchableOpacity>
           ),
         })}
+      />
+      <Stack.Screen
+        name="AddressFlow"
+        component={AddressNavigator}
+        options={{
+          // drawerIcon: AccountIcon,
+          headerShown: false
+        }}
       />
     </Stack.Navigator>
   );

@@ -2,7 +2,7 @@ import React, {useContext, useState, useCallback, useRef} from 'react';
 import {StyleSheet, StatusBar, View, ScrollView} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-import ActionComponent from '../components/shop/ActionComponent';
+import ActionComponent from '../components/shop/AddressActionComponent';
 import CartItem from '../components/shop/CartItem';
 import {Context as CartContext} from '../context/cart/CartContext';
 import {Context as OrdersContext} from '../context/orders/OrdersContext';
@@ -71,7 +71,9 @@ const CartScreen = ({navigation}) => {
               deletedIndex={deletedIndex}
             />
           ))}
+          
         </View>
+        
       </ScrollView>
       <ActionComponent
         withSpinner
@@ -82,7 +84,9 @@ const CartScreen = ({navigation}) => {
          onActionPress={handleOrderPress}
         // onPress={() => { navigate('OrderInforScreen') }}
         actionEnabled={Object.values(items).length}
+        navigation={navigation}
       />
+     
       {alert && (
         <ErrorModal
           isVisible={alert}

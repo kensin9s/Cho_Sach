@@ -59,7 +59,7 @@ const profileReducer = (state, {type, payload}) => {
 
 
     case SET_NAV_PROFILEKEY: {
-      return {...state, proileNavKey: payload};
+      return {...state, profileNavKey: payload};
     }
 
     default:

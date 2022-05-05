@@ -22,9 +22,7 @@ import CategoryNavigator from './Categorynavigator';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
 import FavoritesNavigator from './FavoritesNavigator';
-
-import aaa from '../screens/aaa';
-
+import AddressNavigator from './AddressNavigator';
 const textColor = `rgba(${Colors.text.primary}, 0.7)`;
 const Drawer = createDrawerNavigator();
 
@@ -152,6 +150,16 @@ const DrawerNavigator = () => {
           drawerIcon: AccountIcon,
         }}
       />
+  {/* <Drawer.Screen
+        
+        name="AđdrFlow"
+        component={AddressNavigator}
+        options={{
+
+          title: 'My Address',
+          drawerIcon: AccountIcon,
+        }}
+      /> */}
     </Drawer.Navigator>
     
     

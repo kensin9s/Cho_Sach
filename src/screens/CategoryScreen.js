@@ -126,13 +126,13 @@ const ProductsScreen = ({navigation, route}) => {
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <View style={{flexDirection:'row'}}>
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         onChangeText={(text) => {
           setProductFilter(products.filter((u) => u.title.includes(text)));
         }}
         placeholder="What are you looking for?"
-      />
+      /> */}
       </View>
       <FlatList
         refreshControl={refreshControl()}

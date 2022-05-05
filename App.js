@@ -6,6 +6,7 @@ import {enableScreens} from 'react-native-screens';
 import {Colors} from './src/constants/Colors';
 import {Provider as AuthProvider} from './src/context/auth/AuthContext';
 import {Provider as ProductProvider} from './src/context/product/ProductContext';
+import {Provider as AddressProvider} from './src/context/Address/AddressContext';
 import {Provider as CartProvider} from './src/context/cart/CartContext';
 import {Provider as OrdersProvider} from './src/context/orders/OrdersContext';
 import {Provider as ProfileProvider} from './src/context/Profile/ProfileContext';
@@ -29,9 +30,11 @@ const App = () => {
         <ProductProvider>
           <CartProvider>
             <ProfileProvider>
+              <AddressProvider>
               <OrdersProvider>
                 <RootNavigator />
             </OrdersProvider>
+            </AddressProvider>
               </ProfileProvider>
           </CartProvider>
         </ProductProvider>

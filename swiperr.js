@@ -58,9 +58,9 @@ export default class extends Component {
         <Swiper  autoplayTimeout={5} 
           style={styles.wrapper}
           height={200}
-          onMomentumScrollEnd={(e, state, context) =>
-            console.log('index:', state.index)
-          }
+          // onMomentumScrollEnd={(e, state, context) =>
+          //   console.log('index:', state.index)
+          // }
           dot={
             <View
               style={{

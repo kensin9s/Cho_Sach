@@ -59,12 +59,7 @@ const FavoritesNavigator = ({navigation}) => {
             <TouchableOpacity
               style={styles.backButton}
               onPress={navigation.goBack}>
-              <LeftIcon
-                height={42}
-                width={42}
-                weight={1.3}
-                color={textPrimaryColor}
-              />
+              
             </TouchableOpacity>
           ),
         })}

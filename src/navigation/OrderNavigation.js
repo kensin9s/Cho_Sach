@@ -1,16 +1,13 @@
 // import React, {useContext, useEffect} from 'react';
 // import {StyleSheet, TouchableOpacity} from 'react-native';
 // import {createStackNavigator} from '@react-navigation/stack';
-// import { useNavigation } from '@react-navigation/native';
-// import OrderInforScreen from '../screens/OrderInforScreen';
 // import {Colors} from '../constants/Colors';
 // import CartScreen from '../screens/CartScreen';
 // import CartIcon from '../components/shop/CartIconComponent';
 // import {Context as CartContext} from '../context/cart/CartContext';
 // import LeftIcon from '../components/icons/LeftIcon';
 // import FriesOddIcon from '../components/icons/FriesOddIcon';
-// import Arrow from '../components/icons/Arrow';
-
+// import AddressNavigator from './AddressNavigator';
 // const Stack = createStackNavigator();
 
 // const textPrimaryColor = `rgb(${Colors.text.primary})`;
@@ -26,7 +23,7 @@
 //   },
 // };
 
-// const CategoryNavigator = () => {
+// const OrderNavigator = () => {
 //   const {clearCart} = useContext(CartContext);
 
 //   useEffect(() => {
@@ -34,41 +31,23 @@
 //       clearCart();
 //     };
 //   }, []);
-//   const { navigate } = useNavigation();
 //   return (
-//     <Stack.Navigator screenOptions={screenOptions}>
-//          <Stack.Screen
-//         name="CartScreen"
-//         component={CartScreen}
-//         options={({navigation}) => ({
-//             // title: 'Categories',
-          
-//        headerShown:false,
-//           })}
-        
+//     <Stack.Navigator screenOptions={screenOptions}>     
+      
+//        <Stack.Screen
+//         name="AddressFlow"
+//         component={AddressNavigator}
+//         options={{
+//           title: 'My Address',
+//           // drawerIcon: AccountIcon,
+//         }}
 //       />
-//      <Stack.Screen
-//         name="OrderInforScreen"
-//         component={OrderInforScreen}
-//         options={({navigation}) => ({
-//           title: 'Categories',
-//           headerRightContainerStyle: styles.rightIcon,
-//           headerLeft: () => (
-//             <TouchableOpacity onPress={() => { navigate('CartScreen') }}>
-           
-//               <Arrow height={20}
-//                   width={20}
-//                  />
-//             </TouchableOpacity>
-//           ),
-//           headerLeftContainerStyle: styles.leftIcon,
-//         })}
-//       /> 
+       
 //     </Stack.Navigator>
 //   );
 // };
 
-// export default CategoryNavigator;
+// export default OrderNavigator;
 
 // const styles = StyleSheet.create({
 //   backButton: {

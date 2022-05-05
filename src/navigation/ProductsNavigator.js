@@ -6,12 +6,12 @@ import ProductsScreen from '../screens/ProductsScreen';
 import ProductDetailScreen from '../screens/ProductDetailScreen';
 import {Colors} from '../constants/Colors';
 import CartScreen from '../screens/CartScreen';
-import CategoryScreen from '../screens/CategoryScreen';
 import CartIcon from '../components/shop/CartIconComponent';
+import OrderNavigation from '../navigation/OrderNavigation';
 import {Context as CartContext} from '../context/cart/CartContext';
 import LeftIcon from '../components/icons/LeftIcon';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
-import OrderinforNavigation from '../navigation/OrderinforNavigator';
+import AddressNavigator from './AddressNavigator';
 
 const Stack = createStackNavigator();
 
@@ -71,7 +71,7 @@ const ProductsNavigator = () => {
         options={{headerShown: false}}
       />
      
-      <Stack.Screen
+     <Stack.Screen
         name="Cart"
         component={CartScreen}
         options={({navigation}) => ({
@@ -90,6 +90,15 @@ const ProductsNavigator = () => {
           ),
         })}
       />
+          <Stack.Screen
+        name="AddressFlow"
+        component={AddressNavigator}
+        options={{
+          // drawerIcon: AccountIcon,
+          headerShown: false
+        }}
+      />
+
     </Stack.Navigator>
   );
 };
