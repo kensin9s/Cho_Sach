@@ -48,7 +48,7 @@ const UserProductsScreen = ({navigation}) => {
     ),
     [navigation, actionPressHandler, productsNavKey],
   );
-
+  console.log('you:',userProducts);
   if (!userProducts.length) {
     return (
       <View style={styles.centered}>

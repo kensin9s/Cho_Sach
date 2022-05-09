@@ -1,7 +1,0 @@
-// export const CREATE_ORDERIF = 'CREATE_ORDERIF';
-// export const EDIT_ORDERIF = 'EDIT_ORDERIF';
-// export const SET_ORDERIF = 'SET_ORDERIF';
-// export const SET_NAV_ORDERIFKEY = 'SET_NAV_ORDERKEYIF';
-// export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
-// export const REQUEST_NETWORK_ERROR = 'REQUEST_NETWORK_ERROR';
-// export const NO_ORDERIF = 'NO_ORDERIF';

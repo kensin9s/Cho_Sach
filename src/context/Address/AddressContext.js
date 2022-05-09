@@ -106,9 +106,9 @@ const addAddress = dispatch => async prodData => {
     const address = new Address(
       response.data.name,
       prodData.ownerId,
-      prodData.title,
-      prodData.description,
-      prodData.price,
+      prodData.name,
+      prodData.country,
+      prodData.phoney,
     );
     dispatch({type: ADD_ADDRESS, payload: address});
   } catch (err) {
@@ -120,16 +120,16 @@ const editAddress = dispatch => async prodData => {
   const address = new Address(
     prodData.id,
     prodData.ownerId,
-    prodData.title,
-    prodData.description,
-    prodData.price,
+    prodData.name,
+    prodData.country,
+    prodData.phoney,
   );
   try {
-    console.log(prodData.price);
+    console.log(prodData.phoney);
     await shopApi.patch(`/address/${address.id}.json`, {
-      title: prodData.title, 
-      price: prodData.price,
-      description: prodData.description,
+      name: prodData.name, 
+      phoney: prodData.phoney,
+      country: prodData.country,
      
      });
     dispatch({type: EDIT_ADDRESS, payload: address});
@@ -153,9 +153,9 @@ const getAddress = dispatch => async userId => {
         new Address(
           key,
           data[key].ownerId,
-          data[key].title,
-          data[key].description,
-          data[key].price,
+          data[key].name,
+          data[key].country,
+          data[key].phoney,
         ),
       );
     }

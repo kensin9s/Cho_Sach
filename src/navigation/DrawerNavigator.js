@@ -150,6 +150,28 @@ const DrawerNavigator = () => {
           drawerIcon: AccountIcon,
         }}
       />
+         <Drawer.Screen
+        name="AdminOrder"
+        component={OrdersScreen}
+        options={({navigation}) => ({
+          title: 'My Orders',
+          drawerIcon: CartIcon,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity
+              style={{marginLeft: 20}}
+              onPress={navigation.toggleDrawer}>
+              <FriesOddIcon
+                height={52}
+                width={52}
+                weight={1}
+                color={textColor}
+              />
+            </TouchableOpacity>
+          ),
+          drawerLabel: 'AdminOrders',
+        })}
+      />
   {/* <Drawer.Screen
         
         name="AđdrFlow"

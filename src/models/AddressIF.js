@@ -1,9 +1,9 @@
 export class Address {
-  constructor(id, ownerId, title, description, price) {
+  constructor(id, ownerId, name, country, phoney) {
     this.id = id;
     this.ownerId = ownerId;
-    this.title = title;
-    this.description = description;
-    this.price = price;
+    this.name = name;
+    this.country = country;
+    this.phoney = phoney;
   }
 }

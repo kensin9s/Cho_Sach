@@ -48,6 +48,7 @@ const UserAddressScreen = ({navigation}) => {
     ),
     [navigation, actionPressHandler, addressNavKey],
   );
+  console.log('you:',userAddress);
 
   if (!userAddress.length) {
     return (

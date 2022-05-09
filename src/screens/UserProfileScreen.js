@@ -27,9 +27,10 @@ const UserProfileScreen = ({navigation}) => {
   }
   useEffect(() => {
     loadProfile()
-   console.log('userProfile',userProfile)
 
   }, [])
+  
+  console.log('userProfile',userProfile)
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', loadProfile);
     return unsubscribe;

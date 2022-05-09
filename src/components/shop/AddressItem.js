@@ -42,7 +42,7 @@ const AddressItem = ({
   const onItemPress = useCallback(() => {
     navigation.navigate(navigationRoute, {
       prodId: address.id,
-      title: address.title,
+      name: address.name,
     });
   }, [address]);
 
@@ -60,9 +60,9 @@ const AddressItem = ({
         <View style={styles.contentContainer}>
           <View style={styles.infoSection}>
             <View style={styles.details}>
-              <Text style={styles.price}>Name: {address.title}</Text>
-              <Text style={styles.title}>Phone: {address.price}</Text>
-              <Text style={styles.title}>Address: {address.description}</Text>
+              <Text style={styles.price}>Name: {address.name}</Text>
+              <Text style={styles.title}>Phone: {address.phoney}</Text>
+              <Text style={styles.title}>Address: {address.country}</Text>
             </View>
             <View style={{flexDirection:'row',marginBottom:10,}}>
               <TouchableOpacity onPress={onItemPress} style={{flexDirection:'row'}}>
@@ -70,15 +70,15 @@ const AddressItem = ({
               <Text style={styles.title}>Edit</Text>
               </TouchableOpacity>
               </View>
-            
-            {!hideActionButton && (
-              <ActionButton
-                title={actionTitle}
-                Icon={ActionIcon}
-                onPress={actionPressHandler}
-                prodId={address.id}
-              />
-            )}
+              
+              {!hideActionButton && (
+                <ActionButton
+                  title={actionTitle}
+                  Icon={ActionIcon}
+                  onPress={actionPressHandler}
+                  prodId={address.id}
+                />
+              )}
           </View>
         </View>
       {/* </TouchableOpacity> */}

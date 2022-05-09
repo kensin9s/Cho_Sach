@@ -50,12 +50,29 @@ const filterListbyCateManga = () => {
   const datas = products.filter(data => data.category === 'manga');
   navigation.navigate('category', {listFilter : datas });
 }
+
+const filterListbyCateThieuNhi = () => {
+  const datas = products.filter(data => data.category === 'thieu nhi');
+  navigation.navigate('category', {listFilter : datas });
+}
 const filterListbyCateAmThuc = () => {
   const datas = products.filter(data => data.category === 'am thuc');
   navigation.navigate('category', {listFilter : datas });
 }
-const filterListbyCateThieuNhi = () => {
-  const datas = products.filter(data => data.category === 'thieu nhi');
+const filterListbyCateKhoaHoc = () => {
+  const datas = products.filter(data => data.category === 'khoa hoc');
+  navigation.navigate('category', {listFilter : datas });
+}
+const filterListbyCateKinhDi = () => {
+  const datas = products.filter(data => data.category === 'kinh di');
+  navigation.navigate('category', {listFilter : datas });
+}
+const filterListbyCateChinhTri = () => {
+  const datas = products.filter(data => data.category === 'chinh tri');
+  navigation.navigate('category', {listFilter : datas });
+}
+const filterListbyCateKhac = () => {
+  const datas = products.filter(data => data.category === 'khac');
   navigation.navigate('category', {listFilter : datas });
 }
   
@@ -196,28 +213,24 @@ const filterListbyCateThieuNhi = () => {
 </View >
 <Text style={{fontWeight:'bold',fontSize:25,fontFamily:'serif',marginLeft:20,marginTop:20,marginBottom:10}}>Một vài thể loại khác.</Text>
 <View style={{flexDirection:'row',alignSelf:'center'}}>
-<TouchableOpacity style={styles.touch1}>
+<TouchableOpacity style={styles.touch1} onPress={filterListbyCateAmThuc}>
             <Text style={styles.title}>Ẩm thực</Text>    
     </TouchableOpacity>
-    <TouchableOpacity style={styles.touch2}>
+    <TouchableOpacity style={styles.touch2} onPress={filterListbyCateKinhDi}>
             <Text style={styles.title}>Kinh dị</Text>    
     </TouchableOpacity>
-    <TouchableOpacity style={styles.touch2}>
+    <TouchableOpacity style={styles.touch2} onPress={filterListbyCateChinhTri}>
             <Text style={styles.title}>Chính trị</Text>    
     </TouchableOpacity>
-    
     </View>
-    <View style={{flexDirection:'row',alignSelf:'center'}}>
+    <View style={{flexDirection:'row',alignSelf:'center'}} onPress={filterListbyCateKhoaHoc}>
 <TouchableOpacity style={styles.touch1}>
             <Text style={styles.title}>Khoa học</Text>    
     </TouchableOpacity>
-    <TouchableOpacity style={styles.touch2}>
+    <TouchableOpacity style={styles.touch2} onPress={filterListbyCateKhac}>
             <Text style={styles.title}>Khác</Text>    
-    </TouchableOpacity>
-   
-    
+    </TouchableOpacity> 
     </View>
-    
     </SafeAreaView>
 
   );

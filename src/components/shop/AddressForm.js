@@ -27,22 +27,22 @@ const priceValidator = text => {
 const reducer = (state, {type, payload}) => {
   switch (type) {
     case SET_TITLE: {
-      return {...state, title: {...state.title, value: payload}};
+      return {...state, name: {...state.name, value: payload}};
     }
     case SET_PRICE: {
-      return {...state, price: {...state.price, value: payload}};
+      return {...state, phoney: {...state.phoney, value: payload}};
     }
     case SET_DESCRIPTION: {
-      return {...state, description: {...state.description, value: payload}};
+      return {...state, country: {...state.country, value: payload}};
     }
     case SET_TITLE_VALIDATION: {
-      return {...state, title: {...state.title, isValid: payload}};
+      return {...state, name: {...state.name, isValid: payload}};
     }
     case SET_PRICE_VALIDATION: {
-      return {...state, price: {...state.price, isValid: payload}};
+      return {...state, phoney: {...state.phoney, isValid: payload}};
     }
     case SET_DESCRIPTION_VALIDATION: {
-      return {...state, description: {...state.description, isValid: payload}};
+      return {...state, country: {...state.country, isValid: payload}};
     }
 
     default:
@@ -52,12 +52,12 @@ const reducer = (state, {type, payload}) => {
 
 const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
   const initialFormState = {
-    title: {value: address?.title, isValid: address ? true : false},
-    price: {value: address?.price, isValid: address ? true : false},
-    description: {value: address?.description, isValid: address ? true : false},
+    name: {value: address?.name, isValid: address ? true : false},
+    phoney: {value: address?.phoney, isValid: address ? true : false},
+    country: {value: address?.country, isValid: address ? true : false},
   };
 
-  const [{title, price, description}, dispatch] = useReducer(
+  const [{name, phoney, country}, dispatch] = useReducer(
     reducer,
     initialFormState,
   );
@@ -73,28 +73,28 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
 
   useEffect(() => {
     if (
-      title.value &&
+      name.value &&
 
-      price.value &&
-      description.value &&
-      title.isValid &&
+      phoney.value &&
+      country.value &&
+      name.isValid &&
      
-      price.isValid &&
-      description.isValid
+      phoney.isValid &&
+      country.isValid
     ) {
       setFormIsValid(true);
     } else {
       setFormIsValid(false);
     }
   }, [
-    title.value,
+    name.value,
    
-    price.value,
-    description.value,
-    title.isValid,
+    phoney.value,
+    country.value,
+    name.isValid,
    
-    price.isValid,
-    description.isValid,
+    phoney.isValid,
+    country.isValid,
     formIsValid,
   ]);
 
@@ -102,17 +102,17 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
     ? {
         id: address.id,
         ownerId: address.ownerId,
-        title: title.value,
+        name: name.value,
    
-        description: description.value,
-        price: parseFloat(price.value),
+        country: country.value,
+        phoney: parseFloat(phoney.value),
       }
     : {
         ownerId: userId,
-        title: title.value,
+        name: name.value,
      
-        description: description.value,
-        price: parseFloat(price.value),
+        country: country.value,
+        phoney: parseFloat(phoney.value),
       };
 
   const formSubmitHandler = async () => {
@@ -141,23 +141,23 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
       <LabledInput
         required
         autoCapitalize="sentences"
-        value={title.value}
+        value={name.value}
         label="Họ và Tên"
         onChangeText={newTxt => dispatch({type: SET_TITLE, payload: newTxt})}
-        isValid={title.isValid}
+        isValid={name.isValid}
         setIsValid={val => dispatch({type: SET_TITLE_VALIDATION, payload: val})}
       />
  
       <LabledInput
         required
-        value={price.value?.toString()}
+        value={phoney.value?.toString()}
         label="Số điện thoại"
         keyboardType="numeric"
         onChangeText={
         newTxt => dispatch({type: SET_PRICE, payload: newTxt})
         }
         validators={[priceValidator]}
-        isValid={price.isValid}
+        isValid={phoney.isValid}
         setIsValid={val => dispatch({type: SET_PRICE_VALIDATION, payload: val})}
       />
       <LabledInput
@@ -165,12 +165,12 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
         multiline
         large
         autoCapitalize="sentences"
-        value={description.value}
+        value={country.value}
         label="Địa chỉ"
         onChangeText={newTxt =>
           dispatch({type: SET_DESCRIPTION, payload: newTxt})
         }
-        isValid={description.isValid}
+        isValid={country.isValid}
         setIsValid={val =>
           dispatch({type: SET_DESCRIPTION_VALIDATION, payload: val})
         }
