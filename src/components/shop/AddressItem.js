@@ -64,10 +64,10 @@ const AddressItem = ({
               <Text style={styles.title}>Phone: {address.price}</Text>
               <Text style={styles.title}>Address: {address.description}</Text>
             </View>
-            <View style={{flexDirection:'row'}}>
+            <View style={{flexDirection:'row',marginBottom:10,}}>
               <TouchableOpacity onPress={onItemPress} style={{flexDirection:'row'}}>
               <Icon name="gear-o" size={30} color={'#3333FF'}  />
-              <Text style={styles.title}>EditProfile</Text>
+              <Text style={styles.title}>Edit</Text>
               </TouchableOpacity>
               </View>
             

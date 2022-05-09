@@ -62,7 +62,7 @@ const filterListbyCateThieuNhi = () => {
 
   return (
     <SafeAreaView>
-<Text style={{fontWeight:'bold',fontSize:30,fontFamily:'serif',marginLeft:20,}}>Welcome{'\n'} Back!</Text>
+<Text style={{fontWeight:'bold',fontSize:35,fontFamily:'serif',marginLeft:20,marginBottom:20,}}>Nổi Bật Nhất</Text>
        <View style={{height:200,borderRadius:10}}>
         <Swiper  autoplayTimeout={5} autoplay
           style={styles.wrapper}
@@ -135,7 +135,7 @@ const filterListbyCateThieuNhi = () => {
               source={require('./img/ngontinh.jpg')}
             />
          </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
           onPress={filterListbyCateAmThuc}
             style={styles.slide}
             title={
@@ -146,7 +146,7 @@ const filterListbyCateThieuNhi = () => {
               style={styles.image}
               source={require('./img/amthuc.jpg')}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
           onPress={filterListbyCateManga}
             style={styles.slide}
@@ -194,19 +194,30 @@ const filterListbyCateThieuNhi = () => {
 <Text style={{color:'white',alignSelf:'center',marginTop:10}}>Tình cảm</Text>
     </TouchableOpacity> */}
 </View >
-<Text style={{fontWeight:'bold',fontSize:25,fontFamily:'serif',marginLeft:20,}}>What genre do you like?</Text>
-<View style={{flexDirection:'row'}}>
+<Text style={{fontWeight:'bold',fontSize:25,fontFamily:'serif',marginLeft:20,marginTop:20,marginBottom:10}}>Một vài thể loại khác.</Text>
+<View style={{flexDirection:'row',alignSelf:'center'}}>
 <TouchableOpacity style={styles.touch1}>
-            <Text style={styles.title}>Tình cảm</Text>    
+            <Text style={styles.title}>Ẩm thực</Text>    
     </TouchableOpacity>
     <TouchableOpacity style={styles.touch2}>
-            <Text style={styles.title}>Tình cảm</Text>    
+            <Text style={styles.title}>Kinh dị</Text>    
     </TouchableOpacity>
     <TouchableOpacity style={styles.touch2}>
-            <Text style={styles.title}>Tình cảm</Text>    
+            <Text style={styles.title}>Chính trị</Text>    
     </TouchableOpacity>
     
     </View>
+    <View style={{flexDirection:'row',alignSelf:'center'}}>
+<TouchableOpacity style={styles.touch1}>
+            <Text style={styles.title}>Khoa học</Text>    
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.touch2}>
+            <Text style={styles.title}>Khác</Text>    
+    </TouchableOpacity>
+   
+    
+    </View>
+    
     </SafeAreaView>
 
   );
@@ -292,7 +303,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     title: {color:'#111111',alignSelf:'center',marginTop:10,fontSize:18,fontStyle:'italic',fontWeight:'bold',},
-    touch1: {width:100,height:50,borderRadius:20,backgroundColor:'#DDDDDD',marginTop:10,borderWidth:1,shadowRadius:10,marginLeft:20},
+    touch1: {width:100,height:50,borderRadius:20,backgroundColor:'#DDDDDD',marginTop:10,borderWidth:1,shadowRadius:10,},
     touch2: {width:100,height:50,borderRadius:20,backgroundColor:'#DDDDDD',marginTop:10,borderWidth:1,shadowRadius:10,marginLeft:20,},
     
 

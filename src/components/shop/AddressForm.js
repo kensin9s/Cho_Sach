@@ -142,7 +142,7 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={title.value}
-        label="Title"
+        label="Họ và Tên"
         onChangeText={newTxt => dispatch({type: SET_TITLE, payload: newTxt})}
         isValid={title.isValid}
         setIsValid={val => dispatch({type: SET_TITLE_VALIDATION, payload: val})}
@@ -151,7 +151,7 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
       <LabledInput
         required
         value={price.value?.toString()}
-        label="Price"
+        label="Số điện thoại"
         keyboardType="numeric"
         onChangeText={
         newTxt => dispatch({type: SET_PRICE, payload: newTxt})
@@ -166,7 +166,7 @@ const AddressForm = ({submitButtonTitle, address, onSubmit}) => {
         large
         autoCapitalize="sentences"
         value={description.value}
-        label="Description"
+        label="Địa chỉ"
         onChangeText={newTxt =>
           dispatch({type: SET_DESCRIPTION, payload: newTxt})
         }
