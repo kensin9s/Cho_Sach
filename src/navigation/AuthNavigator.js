@@ -30,7 +30,7 @@ const AuthNavigator = () => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
               <View style={{...styles.headerStyle, justifyContent: 'flex-end',marginTop:40}}>
               <Image source={image} style={{alignSelf:'center', width:200, height:160,}}/>
-                <Text style={styles.Text}>Create Account</Text> 
+                <Text style={styles.Text}>Đăng ký</Text> 
 
               </View>
             </TouchableWithoutFeedback>
@@ -59,7 +59,7 @@ const AuthNavigator = () => {
                   />
                 </TouchableOpacity>
                 <Image source={image} style={{alignSelf:'center', width:200, height:160,}}/>
-                <Text style={styles.Text}>Login</Text>
+                <Text style={styles.Text}>Đăng nhập</Text>
               </View>
             </TouchableWithoutFeedback>
           ),

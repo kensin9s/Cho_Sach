@@ -63,7 +63,7 @@ const AddressNavigator = () => {
         name="CreateAddress"
         component={CreateAddressScreen}
         options={({navigation}) => ({
-          title: 'Create Address',
+          title: 'Thêm địa chỉ',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

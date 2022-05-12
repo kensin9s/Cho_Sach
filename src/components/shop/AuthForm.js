@@ -188,7 +188,7 @@ const AuthForm = ({buttonTitle, onSubmit}) => {
         placeholder="Enter your passowrd"
         Icon={({color}) => <Icon name="lock-o" size={20} color={color} />}
         autoCapitalize="none"
-        label="Password"
+        label="Mật khẩu"
         value={state.password.value}
         isValid={state.password.isValid}
         validators={[passValidator]}

@@ -24,15 +24,15 @@ const LoginScreen = ({navigation}) => {
       <View>
         <KeyboardAwareScrollView contentContainerStyle={{paddingTop: 40}}>
           <AuthForm
-            buttonTitle="Login"
+            buttonTitle="Đăng nhập"
             onSubmit={async props => await login({...props})}
           />
         </KeyboardAwareScrollView>
       </View>
       <View style={styles.linkContainer}>
-        <Text style={styles.linkText}>Don't have an account? </Text>
+        <Text style={styles.linkText}>Bạn chưa có tài khoản? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-          <Text style={styles.link}>Sign up.</Text>
+          <Text style={styles.link}>Đăng ký.</Text>
         </TouchableOpacity>
       </View>
     </View>
