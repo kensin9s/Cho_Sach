@@ -41,7 +41,7 @@ const UserAddressScreen = ({navigation}) => {
         address={item}
         navigationRoute="EditAddress"
         ActionIcon={DeleteIcon}
-        actionTitle="Delete"
+        actionTitle="Xóa"
         onActionPress={actionPressHandler}
         params={addressNavKey}
       />
@@ -58,7 +58,7 @@ const UserAddressScreen = ({navigation}) => {
           size={26}
           color={`rgba(${Colors.text.secondary}, 0.6)`}
         />
-        <Text style={styles.errorMessage}>You have no address yet.</Text>
+        <Text style={styles.errorMessage}>Bạn chưa thêm địa nào.</Text>
       </View>
     );
   }

@@ -75,7 +75,7 @@ const ProductsScreen = ({navigation, route}) => {
         product={item}
         navigationRoute="ProductDetail"
         ActionIcon={CartIcon}
-        actionTitle="To cart"
+        actionTitle="Vào giỏ"
         onActionPress={addToCart}
       />
     ),

@@ -44,7 +44,7 @@ const CategoryNavigator = () => {
         name="aaa"
         component={aaa}
         options={({navigation}) => ({
-            title: 'Categories',
+            title: 'Thể loại',
             // headerRight: () => (
             //   <CartIcon
             //     navigation={navigation}
@@ -73,7 +73,7 @@ const CategoryNavigator = () => {
         name="category"
         component={CategoryScreen}
         options={({navigation}) => ({
-          title: 'Categories',
+          title: 'Thể loại',
           headerRight: () => (
             <CartIcon
               navigation={navigation}
@@ -103,7 +103,7 @@ const CategoryNavigator = () => {
         name="Cart"
         component={CartScreen}
         options={({navigation}) => ({
-          title: 'My Cart',
+          title: 'Giỏ hàng',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

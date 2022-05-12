@@ -72,7 +72,8 @@ const ActionComponent = ({
       <View style={styles.actionContainer}>
         <View style={styles.actionDetails}>
           <Text style={styles.label}>{label}</Text>
-          <Text style={styles.price}>${amount.toFixed(2)}</Text>
+          <Text style={styles.price}>{amount}.000đ</Text>
+          {/* <Text style={styles.price}>{amount.toFixed(2)}.000đ</Text> */}
         </View>
         {actionEnabled ? (
           <PanGestureHandler onGestureEvent={eventHandler}>

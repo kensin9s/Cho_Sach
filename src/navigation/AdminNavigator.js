@@ -34,7 +34,7 @@ const AdminNavigator = () => {
         name="Admin"
         component={UserProductsScreen}
         options={({navigation}) => ({
-          title: 'My Books',
+          title: 'Sách của tôi',
           headerLeft: () => (
             <TouchableOpacity
               style={{marginLeft: 20}}

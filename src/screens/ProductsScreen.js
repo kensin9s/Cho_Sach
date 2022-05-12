@@ -75,7 +75,7 @@ const ProductsScreen = ({navigation, route}) => {
         product={item}
         navigationRoute="ProductDetail"
         ActionIcon={CartIcon}
-        actionTitle="To cart"
+        actionTitle="Vào giỏ"
         onActionPress={addToCart}
       />
     ),
@@ -131,7 +131,7 @@ const ProductsScreen = ({navigation, route}) => {
         onChangeText={(text) => {
           setProductFilter(products.filter((u) => u.title.includes(text)));
         }}
-        placeholder="What are you looking for?"
+        placeholder="   Bạn cần tìm gì ?"
       />
       </View>
       <FlatList

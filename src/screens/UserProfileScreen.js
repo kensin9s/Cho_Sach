@@ -72,7 +72,8 @@ const UserProfileScreen = ({navigation}) => {
           size={26}
           color={`rgba(${Colors.text.secondary}, 0.6)`}
         />
-        <Text style={styles.errorMessage}>You have not added any information.{'\n'} Please add your information to display.</Text>
+        <Text style={styles.errorMessage}>Bạn chưa có thông tin nào.</Text>
+        <Text style={styles.errorMessage}>Vui long thêm thông tinn của bạn để hiển thị.</Text>
         <TouchableOpacity  style={{alignSelf:'center',marginTop:100 ,width:150,height:50,borderRadius:20,borderWidth:1,borderColor:'black'}} onPress={() => navigation.navigate('CreateProfile')}>
             {/* <PlusIcon marginTop={100} height={42} width={42} weight={1.3} name="warning"
           size={26}
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     fontFamily: 'Lato-Bold',
+    alignSelf:'center',
     color: textSecondaryColor,
     fontSize: 16,
     marginTop: 10,

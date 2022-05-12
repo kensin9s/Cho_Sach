@@ -33,7 +33,7 @@ const ProfileNavigator = () => {
         name="UserAdmin"
         component={UserProfileScreen}
         options={({navigation}) => ({
-          title: 'My Profile',
+          title: 'Trang cá nhân',
           headerLeft: () => (
             <TouchableOpacity
               style={{marginLeft: 20}}

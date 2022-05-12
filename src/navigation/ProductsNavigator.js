@@ -42,7 +42,7 @@ const ProductsNavigator = () => {
         name="Products"
         component={ProductsScreen}
         options={({navigation}) => ({
-          title: 'Books Market',
+          title: 'Chợ Sách',
           headerRight: () => (
             <CartIcon
               navigation={navigation}
@@ -75,7 +75,7 @@ const ProductsNavigator = () => {
         name="Cart"
         component={CartScreen}
         options={({navigation}) => ({
-          title: 'My Cart',
+          title: 'Giỏ hàng',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

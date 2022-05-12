@@ -1,12 +1,13 @@
+import moment from 'moment';
+
 export class AdminOrder {
-    constructor(product,address ,quantity) {
-      this.ownerId = product.ownerId;
-      this.id = product.id;
-      this.price = product.price;
-      this.title = product.title;
-      this.imageUrl = product.imageUrl;
-      this.ownerId = product.ownerId;
-      this.quantity = quantity;
-      this.total = this.price * this.quantity;
-    }
+  constructor(id, items, totalAmount, date) {
+    this.id = id;
+    this.items = items;
+    this.totalAmount = totalAmount;
+    this._date = date;
   }
+  get date() {
+    return moment(this._date).format('MMMM Do YYYY, hh:mm');
+  }
+}

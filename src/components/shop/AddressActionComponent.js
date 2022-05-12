@@ -80,11 +80,12 @@ const ActionComponent = ({
         {/* onPress={() => { navigate('ProductsFlow', {screen: 'OrderNavigation', params: {screen: 'OrderAddress'}}) }} */}
               <TouchableOpacity  style={{flexDirection:'row'}} onPress={() => { navigation.navigate('AddressFlow') }} >
               <Iconn name="plane" size={20} color={'red'} />
-        <Text style={{color:'red',fontSize:25,marginBottom:10}}>Adress</Text>
+        <Text style={{color:'red',fontSize:25,marginBottom:10}}>Địa chỉ</Text>
               </TouchableOpacity>
               </View>
           <Text style={styles.label}>{label}</Text>
-          <Text style={styles.price}>${amount.toFixed(2)}</Text>
+          <Text style={styles.price}>{amount}.000đ</Text>
+          {/* <Text style={styles.price}>${amount.toFixed(2)}</Text> */}
         </View>
        
 

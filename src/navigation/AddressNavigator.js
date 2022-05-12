@@ -34,7 +34,7 @@ const AddressNavigator = () => {
         name="Address"
         component={UserAddressScreen}
         options={({navigation}) => ({
-          title: 'My Address',
+          title: 'Địa chỉ',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

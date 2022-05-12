@@ -42,7 +42,7 @@ const FavoritesNavigator = ({navigation}) => {
               />
             </TouchableOpacity>
           ),
-          title: 'My Favorites',
+          title: 'Yêu thích',
         }}
       />
       <Stack.Screen
@@ -54,7 +54,7 @@ const FavoritesNavigator = ({navigation}) => {
         name="Cart"
         component={CartScreen}
         options={({navigation}) => ({
-          title: 'My Cart',
+          title: 'Giỏ hàngs',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

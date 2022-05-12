@@ -9,6 +9,7 @@ import {Provider as ProductProvider} from './src/context/product/ProductContext'
 import {Provider as AddressProvider} from './src/context/Address/AddressContext';
 import {Provider as CartProvider} from './src/context/cart/CartContext';
 import {Provider as OrdersProvider} from './src/context/orders/OrdersContext';
+import {Provider as AdminOrdersProvider} from './src/context/AdminOrder/AdminOrderContext';
 import {Provider as ProfileProvider} from './src/context/Profile/ProfileContext';
 import OneSignal from 'react-native-onesignal';
 
@@ -30,11 +31,14 @@ const App = () => {
         <ProductProvider>
           <CartProvider>
             <ProfileProvider>
+            <AdminOrdersProvider>
               <AddressProvider>
+                
               <OrdersProvider>
                 <RootNavigator />
             </OrdersProvider>
             </AddressProvider>
+            </AdminOrdersProvider>
               </ProfileProvider>
           </CartProvider>
         </ProductProvider>

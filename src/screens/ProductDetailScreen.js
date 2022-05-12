@@ -173,8 +173,8 @@ const ProductDetailScreen = ({route, navigation}) => {
         </View>
       </Animated.View>
       <ActionComponent
-        actionTitle="To cart"
-        label="Price"
+        actionTitle="Vào Giỏ"
+        label="Đơn giá"
         amount={selectedProd.price}
         Icon={CartIconOutline}
         onActionPress={onAddToCart}

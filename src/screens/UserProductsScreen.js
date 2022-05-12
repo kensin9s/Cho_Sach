@@ -41,7 +41,7 @@ const UserProductsScreen = ({navigation}) => {
         product={item}
         navigationRoute="EditProduct"
         ActionIcon={DeleteIcon}
-        actionTitle="Delete"
+        actionTitle="Xóa"
         onActionPress={actionPressHandler}
         params={productsNavKey}
       />
@@ -57,7 +57,8 @@ const UserProductsScreen = ({navigation}) => {
           size={26}
           color={`rgba(${Colors.text.secondary}, 0.6)`}
         />
-        <Text style={styles.errorMessage}>You have no products yet.</Text>
+        <Text style={styles.errorMessage}>Bạn chưa có cuốn sách nào.</Text>
+        <Text style={styles.errorMessage}>Hãy đăng tải cuốn sách của bạn để nó có ở chợ sách.</Text>
       </View>
     );
   }

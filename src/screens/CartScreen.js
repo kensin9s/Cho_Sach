@@ -77,8 +77,8 @@ const CartScreen = ({navigation}) => {
       </ScrollView>
       <ActionComponent
         withSpinner
-        actionTitle="Order now"
-        label="Total amount"
+        actionTitle="Mua Ngay"
+        label="Thành tiền "
         amount={totalAmount}
         Icon={planeIcon}
          onActionPress={handleOrderPress}

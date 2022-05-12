@@ -16,6 +16,7 @@ import {
 import Icon from '../components/icons/LightIcons';
 import {Colors} from '../constants/Colors';
 import OrdersScreen from '../screens/OrdersScreen';
+import AdminOrdersScreen from '../screens/AdminOrderScreen';
 import AdminNavigator from './AdminNavigator';
 import ProfileNavigator from './ProfileNavigator';
 import CategoryNavigator from './Categorynavigator';
@@ -77,7 +78,7 @@ const DrawerNavigator = () => {
           </View>
           <TouchableOpacity style={styles.logoutButton} onPress={logout}>
             <Icon name="logout-left" size={20} color={textColor} />
-            <Text style={styles.logoutTitle}>Logout</Text>
+            <Text style={styles.logoutTitle}>Đăng xuất</Text>
           </TouchableOpacity>
         </DrawerContentScrollView>
       )}
@@ -92,7 +93,7 @@ const DrawerNavigator = () => {
         name="ProductsFlow"
         component={ProductsNavigator}
         options={{
-          title: 'Books Marketplace',
+          title: 'Chợ Sách',
           drawerIcon: ShopIcon,
         }}
       />
@@ -100,7 +101,7 @@ const DrawerNavigator = () => {
         name="CATEGORY"
         component={CategoryNavigator}
         options={{
-          title: 'Category',
+          title: 'Thể loại',
           drawerIcon: ListIcon,
         }}
       />
@@ -108,7 +109,7 @@ const DrawerNavigator = () => {
         name="Orders"
         component={OrdersScreen}
         options={({navigation}) => ({
-          title: 'My Orders',
+          title: 'Đơn hàng của tôi',
           drawerIcon: CartIcon,
           headerShown: true,
           headerLeft: () => (
@@ -123,7 +124,7 @@ const DrawerNavigator = () => {
               />
             </TouchableOpacity>
           ),
-          drawerLabel: 'Orders',
+          drawerLabel: 'Đơn hàng',
         })}
       />
       <Drawer.Screen
@@ -131,14 +132,14 @@ const DrawerNavigator = () => {
         component={FavoritesNavigator}
         options={{
           drawerIcon: starIcon,
-          drawerLabel: 'Favorites',
+          drawerLabel: 'Yêu thích',
         }}
       />
       <Drawer.Screen
         name="AdminFlow"
         component={AdminNavigator}
         options={{
-          title: 'My Products',
+          title: 'Sách của tôi',
           drawerIcon: userIcon,
         }}
       />
@@ -146,15 +147,15 @@ const DrawerNavigator = () => {
         name="AccountFlow"
         component={ProfileNavigator}
         options={{
-          title: 'Account',
+          title: 'Tài khoản',
           drawerIcon: AccountIcon,
         }}
       />
-         <Drawer.Screen
+         {/* <Drawer.Screen
         name="AdminOrder"
-        component={OrdersScreen}
+        component={AdminOrdersScreen}
         options={({navigation}) => ({
-          title: 'My Orders',
+          title: 'Đơn đã bán',
           drawerIcon: CartIcon,
           headerShown: true,
           headerLeft: () => (
@@ -171,7 +172,7 @@ const DrawerNavigator = () => {
           ),
           drawerLabel: 'AdminOrders',
         })}
-      />
+      /> */}
   {/* <Drawer.Screen
         
         name="AđdrFlow"

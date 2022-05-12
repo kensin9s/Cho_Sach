@@ -18,7 +18,7 @@ const FavoritesScreen = () => {
         product={item}
         navigationRoute="ProductDetail"
         ActionIcon={CartIcon}
-        actionTitle="To cart"
+        actionTitle="Vào giỏ"
         hideActionButton
       />
     ),

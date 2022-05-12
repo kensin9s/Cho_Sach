@@ -1,0 +1,2 @@
+export const ADD_ADMINORDER = 'ADD_ADMINORDER';
+export const SET_ADMINORDER= 'SET_ADMINORDER';

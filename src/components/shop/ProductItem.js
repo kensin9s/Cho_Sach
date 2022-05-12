@@ -62,7 +62,7 @@ const ProductItem = ({
           <View style={styles.infoSection}>
             <View style={styles.details}>
               <Text style={styles.title}>{product.title}</Text>
-              <Text style={styles.price}>${product.price}</Text>
+              <Text style={styles.price}>{product.price}.000đ</Text>
             </View>
             
             {!hideActionButton && (
