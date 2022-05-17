@@ -71,14 +71,14 @@ const AddressItem = ({
               </TouchableOpacity>
               </View>
               
-              {!hideActionButton && (
+              {/* {!hideActionButton && (
                 <ActionButton
                   title={actionTitle}
                   Icon={ActionIcon}
                   onPress={actionPressHandler}
                   prodId={address.id}
                 />
-              )}
+              )} */}
           </View>
         </View>
       {/* </TouchableOpacity> */}

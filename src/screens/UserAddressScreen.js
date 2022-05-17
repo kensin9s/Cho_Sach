@@ -1,9 +1,10 @@
-import React, {useCallback, useContext} from 'react';
+import React, {useCallback, useContext,useEffect} from 'react';
 import {FlatList, StyleSheet, View, Text} from 'react-native';
 
 import AddressItem from '../components/shop/AddressItem';
 import {Context as AddressContext} from '../context/Address/AddressContext';
 import {Context as CartContext} from '../context/cart/CartContext';
+import {Context as AuthContext} from '../context/auth/AuthContext';
 import {CommonActions} from '@react-navigation/native';
 import {Colors} from '../constants/Colors';
 import Icon from '../components/icons/LightIcons';
@@ -14,11 +15,25 @@ const ShopIcon = ({color}) => <Icon name="shop-o" size={20} color={color} />;
 const UserAddressScreen = ({navigation}) => {
   const {
     state: {userAddress, addressNavKey},
-    deleteAddress,
+    getAddress
   } = useContext(AddressContext);
 
-  const {removeFromCart} = useContext(CartContext);
+  const {
+    state: {userId},
+  } = useContext(AuthContext);
+  const loadAddress = async () => {
+    await getAddress(userId);
+  }
+  useEffect(() => {
+    loadAddress()
 
+  }, [])
+  
+  console.log('userProfile',userAddress)
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', loadAddress);
+    return unsubscribe;
+  }, []);
   const actionPressHandler = useCallback(
     (item, addressNavKey) => {
       if (addressNavKey) {

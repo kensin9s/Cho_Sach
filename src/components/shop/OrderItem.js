@@ -65,7 +65,7 @@ const OrderItem = ({orderItem: {date, totalAmount, items}}) => {
         <View style={styles.container}>
           <Text style={styles.date}>{date}</Text>
           <View style={styles.detailsContainer}>
-            <Text style={styles.totalAmount}>${totalAmount.toFixed(2)}</Text>
+            <Text style={styles.totalAmount}>{totalAmount}.000đ</Text>
             <TouchableOpacity onPress={handleItemPress}>
               <Animated.View style={[iconAnimatedStyle, {marginEnd: 10}]}>
                 <View
@@ -96,7 +96,7 @@ const OrderItem = ({orderItem: {date, totalAmount, items}}) => {
                     <Text style={styles.quantity}>x{cartItem.quantity}</Text>
                   </View>
                 </View>
-                <Text style={styles.total}>${cartItem.total.toFixed(2)}</Text>
+                <Text style={styles.total}>{cartItem.total}.000đ</Text>
               </View>
             );
           })}

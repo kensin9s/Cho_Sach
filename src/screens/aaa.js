@@ -223,8 +223,8 @@ const filterListbyCateKhac = () => {
             <Text style={styles.title}>Chính trị</Text>    
     </TouchableOpacity>
     </View>
-    <View style={{flexDirection:'row',alignSelf:'center'}} onPress={filterListbyCateKhoaHoc}>
-<TouchableOpacity style={styles.touch1}>
+    <View style={{flexDirection:'row',alignSelf:'center'}} >
+<TouchableOpacity style={styles.touch1} onPress={filterListbyCateKhoaHoc}>
             <Text style={styles.title}>Khoa học</Text>    
     </TouchableOpacity>
     <TouchableOpacity style={styles.touch2} onPress={filterListbyCateKhac}>

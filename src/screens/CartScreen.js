@@ -40,6 +40,7 @@ const CartScreen = ({navigation}) => {
       await addOrder(Object.values(items), totalAmount, userId);
       clearCart();
       navigation.goBack();
+      //navigation.navigate('Orders')
     } catch (err) {
       if (err.message === 'Network Error') {
         toggleAlert();
