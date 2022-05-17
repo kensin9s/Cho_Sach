@@ -22,15 +22,30 @@ const ordersReducer = (state, {type, payload}) => {
   }
 };
 
-const addOrder = dispatch => async (cartItems, totalAmount, userId) => {
+const addOrder = dispatch => async (address,cartItems, totalAmount, userId) => {
   const date = new Date();
   try {
-    console.log(userId);
-    const response = await shopApi.post(`/orders/${userId}.json`, {
+    const shortData = {
+      address: address.length > 0 ? address[0] : {},
       cartItems,
-      totalAmount,
       date: date.toISOString(),
-    });
+      buyerId:userId
+    };
+    console.log('hihihi',address);
+    const orderData = {
+      ...shortData,
+      totalAmount,
+    }
+    let listOwner = cartItems.map(item => item.ownerId);
+    let uniqueOwners = Array.from(new Set(listOwner));
+
+    const response = await shopApi.post(`/orders/${userId}.json`, orderData);
+   
+    for (let i = 0; i < uniqueOwners.length; i++) {
+      const cartItemsByOwner = cartItems.filter(item => item.ownerId === uniqueOwners[i]);
+      shortData.cartItems = [...cartItemsByOwner];
+      shopApi.post(`/adminorders/${uniqueOwners[i]}.json`,shortData);
+    }
     const id = response.data.name;
     const orderItem = new Order(id, cartItems, totalAmount, new Date(date));
     dispatch({type: ADD_ORDER, payload: orderItem});
@@ -59,8 +74,28 @@ const getOrders = dispatch => async userId => {
   }
 };
 
+const getAdminOrders = dispatch => async userId => {
+  try {
+    const response = await shopApi.get(`/adminorders/${userId}.json`);
+    const Adminorders = [];
+    for (let key in response.data) {
+      Adminorders.push(
+        new Order(
+          key,
+          response.data[key].cartItems,
+          response.data[key].totalAmount,
+          response.data[key].date,
+          response.data[key].address,
+        ),
+      );
+    }
+    dispatch({type: SET_ORDERS, payload: Adminorders});
+  } catch (err) {
+    throw err;
+  }
+};
 export const {Context, Provider} = createDataContext(
   ordersReducer,
   intialState,
-  {addOrder, getOrders},
+  {addOrder, getOrders,getAdminOrders},
 );

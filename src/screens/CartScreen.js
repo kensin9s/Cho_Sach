@@ -7,6 +7,7 @@ import CartItem from '../components/shop/CartItem';
 import {Context as CartContext} from '../context/cart/CartContext';
 import {Context as OrdersContext} from '../context/orders/OrdersContext';
 import {Context as AuthContext} from '../context/auth/AuthContext';
+import {Context as AddressContext} from '../context/Address/AddressContext';
 import {Colors} from '../constants/Colors';
 import ErrorModal from '../components/shop/ErrorModal';
 import {useSharedValue} from 'react-native-reanimated';
@@ -28,6 +29,9 @@ const CartScreen = ({navigation}) => {
   const {
     state: {userId},
   } = useContext(AuthContext);
+  const {
+    state: {userAddress},
+  } = useContext(AddressContext);
   const [alert, setAlert] = useState(false);
 
   const toggleAlert = () => {
@@ -37,7 +41,7 @@ const CartScreen = ({navigation}) => {
   const data = Object.values(items);
   const handleOrderPress = useCallback(async () => {
     try {
-      await addOrder(Object.values(items), totalAmount, userId);
+      await addOrder(userAddress ,Object.values(items), totalAmount, userId);
       clearCart();
       navigation.goBack();
       //navigation.navigate('Orders')

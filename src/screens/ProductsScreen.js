@@ -20,11 +20,14 @@ import Icon from '../components/icons/LightIcons';
 
 import ProductItem from '../components/shop/ProductItem';
 import {Context as ProductContext} from '../context/product/ProductContext';
+import {Context as AddressContext} from '../context/Address/AddressContext';
 import {Context as CartContext} from '../context/cart/CartContext';
+import {Context as OrderContext} from '../context/orders/OrdersContext';
 import {Colors} from '../constants/Colors';
 import {NO_PRODUCTS, REQUEST_NETWORK_ERROR} from '../context/product/types';
 import ErrorScreen from '../components/shop/ErrorScreen';
 import {Context as AuthContext} from '../context/auth/AuthContext';
+import {Context as ProfileContext} from '../context/Profile/ProfileContext';
 
 const primaryColor = `rgb(${Colors.primary})`;
 const textSecondaryColor = `rgba(${Colors.text.secondary}, 0.7)`;
@@ -39,11 +42,24 @@ const ProductsScreen = ({navigation, route}) => {
     getProducts,
     getFavorites,
   } = useContext(ProductContext);
+  const {
+    state: {userAddress, addressNavKey},
+    getAddress
+  } = useContext(AddressContext);
+  const {
+    state: {orders},
+    getAdminOrders,
+  } = useContext(OrderContext);
+  const {
+    state: {userProfile, profileNavKey},
+    getProfile
+  } = useContext(ProfileContext);
   const listFilter = route?.params?.listFilter;
   const {addToCart} = useContext(CartContext);
   const {
     state: {userId},
   } = useContext(AuthContext);
+  
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -51,12 +67,15 @@ const ProductsScreen = ({navigation, route}) => {
 
   const loadData = async () => {
     await getProducts(userId);
-
+    await getAddress(userId);
+    await getProfile(userId);
+    await getAdminOrders(userId);
     if (!favoritesLoaded.current) {
       await getFavorites();
       favoritesLoaded.current = true;
     }
   };
+
 
   useEffect(() => {
     setIsLoading(true);

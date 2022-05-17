@@ -23,7 +23,7 @@ import CategoryNavigator from './Categorynavigator';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 import FriesOddIcon from '../components/icons/FriesOddIcon';
 import FavoritesNavigator from './FavoritesNavigator';
-import AddressNavigator from './AddressNavigator';
+import AdminOrderItem from '../components/shop/AdminOrderItem';
 const textColor = `rgba(${Colors.text.primary}, 0.7)`;
 const Drawer = createDrawerNavigator();
 
@@ -127,6 +127,28 @@ const DrawerNavigator = () => {
           drawerLabel: 'Đơn hàng',
         })}
       />
+            <Drawer.Screen
+        name="AdminOrder"
+        component={AdminOrdersScreen}
+        options={({navigation}) => ({
+          title: 'Đơn đã bán',
+          drawerIcon: CartIcon,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity
+              style={{marginLeft: 20}}
+              onPress={navigation.toggleDrawer}>
+              <FriesOddIcon
+                height={52}
+                width={52}
+                weight={1}
+                color={textColor}
+              />
+            </TouchableOpacity>
+          ),
+          drawerLabel: 'Đơn đã bán được',
+        })}
+      /> 
       <Drawer.Screen
         name="FavoritesFlow"
         component={FavoritesNavigator}
@@ -151,28 +173,8 @@ const DrawerNavigator = () => {
           drawerIcon: AccountIcon,
         }}
       />
-         {/* <Drawer.Screen
-        name="AdminOrder"
-        component={AdminOrdersScreen}
-        options={({navigation}) => ({
-          title: 'Đơn đã bán',
-          drawerIcon: CartIcon,
-          headerShown: true,
-          headerLeft: () => (
-            <TouchableOpacity
-              style={{marginLeft: 20}}
-              onPress={navigation.toggleDrawer}>
-              <FriesOddIcon
-                height={52}
-                width={52}
-                weight={1}
-                color={textColor}
-              />
-            </TouchableOpacity>
-          ),
-          drawerLabel: 'AdminOrders',
-        })}
-      /> */}
+      
+    
   {/* <Drawer.Screen
         
         name="AđdrFlow"

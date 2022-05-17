@@ -11,10 +11,11 @@ import Animated, {
   runOnUI,
   measure,
 } from 'react-native-reanimated';
+import { Address } from '../../models/AddressIF';
 
 const LIST_ITEM_HEIGHT = 60;
 
-const AdminOrderItem = ({adminOrderItem: {date, totalAmount, items}}) => {
+const OrderItem = ({orderItem: {date, totalAmount, items,address}}) => {
   // Animations...
   const rotation = useSharedValue(0);
   const height = useSharedValue(0);
@@ -65,7 +66,6 @@ const AdminOrderItem = ({adminOrderItem: {date, totalAmount, items}}) => {
         <View style={styles.container}>
           <Text style={styles.date}>{date}</Text>
           <View style={styles.detailsContainer}>
-            <Text style={styles.totalAmount}>${totalAmount.toFixed(2)}</Text>
             <TouchableOpacity onPress={handleItemPress}>
               <Animated.View style={[iconAnimatedStyle, {marginEnd: 10}]}>
                 <View
@@ -83,6 +83,12 @@ const AdminOrderItem = ({adminOrderItem: {date, totalAmount, items}}) => {
       </TouchableOpacity>
       <Animated.View style={[listAnimatedStyle, styles.listAnimatedContainer]}>
         <View ref={aRef} style={styles.listContainer}>
+          <View style={{marginBottom:20, height: 100}}>
+          <Text style={{fontSize:15,fontWeight:'bold',alignSelf:'center'}}>--Thông tin khách hàng--</Text>
+            <Text style={{fontSize:15,fontWeight:'bold',alignSelf:'center'}}>{address?.name}</Text>
+            <Text style={{fontSize:15,fontWeight:'bold',alignSelf:'center'}}>Địa chỉ: {address?.country}</Text>
+            <Text style={{fontSize:15,fontWeight:'bold',alignSelf:'center'}}>SĐT: {address?.phoney}</Text>
+          </View>
           {items.map(cartItem => {
             return (
               <View key={cartItem.id} style={styles.cartItem}>
@@ -96,7 +102,7 @@ const AdminOrderItem = ({adminOrderItem: {date, totalAmount, items}}) => {
                     <Text style={styles.quantity}>x{cartItem.quantity}</Text>
                   </View>
                 </View>
-                <Text style={styles.total}>${cartItem.total.toFixed(2)}</Text>
+                <Text style={styles.total}>{cartItem.total}.000đ</Text>
               </View>
             );
           })}
@@ -106,7 +112,7 @@ const AdminOrderItem = ({adminOrderItem: {date, totalAmount, items}}) => {
   );
 };
 
-export default AdminOrderItem;
+export default OrderItem;
 
 const styles = StyleSheet.create({
   container: {

@@ -10,7 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import AdminOrderItem from '../components/shop/AdminOrderItem';
-import {Context as AdminOrderContext} from '../context/AdminOrder/AdminOrderContext';
+import {Context as OrderContext} from '../context/orders/OrdersContext';
 import {Context as AuthContext} from '../context/auth/AuthContext';
 import {Colors} from '../constants/Colors';
 import ErrorScreen from '../components/shop/ErrorScreen';
@@ -18,11 +18,11 @@ import ErrorScreen from '../components/shop/ErrorScreen';
 const primaryColor = `rgb(${Colors.primary})`;
 const textSecondaryColor = `rgba(${Colors.text.secondary}, 0.7)`;
 
-const AdminOrdersScreen = ({navigation}) => {
+const OrdersScreen = ({navigation}) => {
   const {
-    state: {adminorders},
+    state: {orders},
     getAdminOrders,
-  } = useContext(AdminOrderContext);
+  } = useContext(OrderContext);
   const {
     state: {userId},
   } = useContext(AuthContext);
@@ -62,11 +62,11 @@ const AdminOrdersScreen = ({navigation}) => {
     );
   }
 
-  if (error && !adminorders.length) {
+  if (error && !orders.length) {
     return <ErrorScreen errorMessage={error} onRetry={loadData} />;
   }
 
-  if (!adminorders.length && !error) {
+  if (!orders.length && !error) {
     return (
       <View style={styles.centered}>
         <Icon
@@ -74,10 +74,11 @@ const AdminOrdersScreen = ({navigation}) => {
           size={26}
           color={`rgba(${Colors.text.secondary}, 0.6)`}
         />
-        <Text style={styles.errorMessage}>You have no orders yet.</Text>
+        <Text style={styles.errorMessage}>Chưa có ai mua của bạn.</Text>
       </View>
     );
   }
+  console.log('kkk',orders);
 
   return (
     <View style={{backgroundColor:'#EEEEEE'}}>
@@ -94,15 +95,16 @@ const AdminOrdersScreen = ({navigation}) => {
           colors={[primaryColor]}
         />
       }
-      data={adminorders}
+      data={orders}
       contentContainerStyle={{paddingHorizontal: 25, paddingBottom: 10}}
-      renderItem={({item}) => <AdminOrderItem adminOrderItem={item} />}
+      renderItem={({item}) => <AdminOrderItem orderItem={item} />}
     />
     </View>
   );
+ 
 };
 
-export default AdminOrdersScreen;
+export default OrdersScreen;
 
 const styles = StyleSheet.create({
   centered: {
