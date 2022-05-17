@@ -175,7 +175,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={title.value}
-        label="Name"
+        label="Họ và tên"
         onChangeText={newTxt => dispatch({type: SET_TITLE, payload: newTxt})}
         isValid={title.isValid}
         setIsValid={val => dispatch({type: SET_TITLE_VALIDATION, payload: val})}
@@ -194,7 +194,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={gender.value}
-        label="Gender"
+        label="Giới tính"
         onChangeText={newTxt => dispatch({type: SET_GENDER, payload: newTxt})}
         isValid={gender.isValid}
         setIsValid={val => dispatch({type: SET_GENDER_VALIDATION, payload: val})}
@@ -204,7 +204,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={description.value}
-        label="ADDRESS"
+        label="Địa chỉ"
         onChangeText={newTxt => dispatch({type: SET_DESCRIPTION, payload: newTxt})}
         isValid={description.isValid}
         setIsValid={val => dispatch({type: SET_DESCRIPTION_VALIDATION, payload: val})}
@@ -222,7 +222,7 @@ const ProductForm = ({submitButtonTitle, profile, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={phone.value}
-        label="Phone Number"
+        label="Số điện thoại"
         onChangeText={newTxt => dispatch({type: SET_PHONE, payload: newTxt})}
         isValid={phone.isValid}
         setIsValid={val => dispatch({type: SET_PHONE_VALIDATION, payload: val})}

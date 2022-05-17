@@ -13,7 +13,7 @@ const CreateProductScreen = () => {
     <View style={styles.container}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <ProductForm
-          submitButtonTitle="Create Product"
+          submitButtonTitle="Hoàn Thành"
           onSubmit={async prodData => {
             try {
               await addProduct(prodData);

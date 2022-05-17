@@ -62,11 +62,11 @@ const ProfileItem = ({
           <Image style={styles.image} source={{uri: profile.imageUrl}} />
           <View style={styles.infoSection}>
             <View style={styles.details}> 
-              <Text style={styles.price}>Name :  {profile.title}</Text>
-              <Text style={styles.title}>Gender :  {profile.gender}</Text>
-              <Text style={styles.title}>Ađdress :  {profile.description}</Text>
+              <Text style={styles.price}>{profile.title}</Text>
+              <Text style={styles.title}>Giới tính :  {profile.gender}</Text>
+              <Text style={styles.title}>Địa chỉ :  {profile.description}</Text>
               <Text style={styles.title}>Email :  {profile.emails}</Text>
-              <Text style={styles.title}>Phone :  {profile.phone}</Text>
+              <Text style={styles.title}>Điện thoại :  {profile.phone}</Text>
          
             </View>
             
@@ -74,7 +74,7 @@ const ProfileItem = ({
               <View style={{flexDirection:'row'}}>
               <TouchableOpacity onPress={onItemPress} style={{flexDirection:'row'}}>
               <Icon name="gear-o" size={30} color={'#3333FF'}  />
-              <Text style={styles.titleProfile}>EditProfile</Text>
+              <Text style={styles.titleProfile}>Chỉnh sửa</Text>
               </TouchableOpacity>
               </View>
              

@@ -52,7 +52,7 @@ const ProfileNavigator = () => {
         name="CreateProfile"
         component={CreateProfileScreen}
         options={({navigation}) => ({
-          title: 'Information',
+          title: 'Thông tin cá nhân',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}
@@ -72,7 +72,7 @@ const ProfileNavigator = () => {
         name="EditProfile"
         component={EditProfileScreen}
         options={({navigation}) => ({
-          title: 'Edit',
+          title: 'Chỉnh sửa',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

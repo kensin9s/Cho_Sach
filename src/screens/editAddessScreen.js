@@ -18,7 +18,7 @@ const EditAddressScreen = ({route}) => {
     <View style={{backgroundColor:'#EEEEEE'}}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <AddressForm
-          submitButtonTitle="Save"
+          submitButtonTitle="Lưu"
            address={selectedAddress}
           
           onSubmit={async prodData => {

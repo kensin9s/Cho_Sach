@@ -18,7 +18,7 @@ const EditProfileScreen = ({route}) => {
     <View style={{backgroundColor:'#EEEEEE'}}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <ProfileForm
-          submitButtonTitle="Save"
+          submitButtonTitle="Lưu"
            profile={selectedProfile}
           
           onSubmit={async prodData => {

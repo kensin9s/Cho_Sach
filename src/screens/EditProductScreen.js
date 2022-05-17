@@ -18,7 +18,7 @@ const EditProductScreen = ({route}) => {
     <View style={{backgroundColor:'#EEEEEE'}}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <ProductForm
-          submitButtonTitle="Save"
+          submitButtonTitle="Lưu"
            product={selectedProduct}
           
           onSubmit={async prodData => {

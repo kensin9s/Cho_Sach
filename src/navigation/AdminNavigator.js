@@ -82,7 +82,7 @@ const AdminNavigator = () => {
         name="EditProduct"
         component={EditProductScreen}
         options={({navigation}) => ({
-          title: 'Edit',
+          title: 'Chỉnh Sửa',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

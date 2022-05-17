@@ -83,7 +83,7 @@ const AddressNavigator = () => {
         name="EditAddress"
         component={EditAddressScreen}
         options={({navigation}) => ({
-          title: 'Edit',
+          title: 'Chỉnh sửa',
           headerLeft: () => (
             <TouchableOpacity
               style={styles.backButton}

@@ -13,7 +13,7 @@ const CreateProfileScreen = () => {
     <View style={styles.container}>
       <KeyboardAwareScrollView contentContainerStyle={{paddingBottom: 30}}>
         <ProfileForm
-          submitButtonTitle="Create Profile"
+          submitButtonTitle="Hoàn Thành"
           onSubmit={async prodData => {
             try {
               await createProfile(prodData);

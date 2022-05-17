@@ -166,7 +166,7 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={title.value}
-        label="Title"
+        label="Tên sách"
         onChangeText={newTxt => dispatch({type: SET_TITLE, payload: newTxt})}
         isValid={title.isValid}
         setIsValid={val => dispatch({type: SET_TITLE_VALIDATION, payload: val})}
@@ -185,7 +185,7 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
         required
         autoCapitalize="sentences"
         value={category.value}
-        label="category"
+        label="Thể loại"
         onChangeText={newTxt => dispatch({type: SET_CATEGORY, payload: newTxt})}
         isValid={category.isValid}
         setIsValid={val => dispatch({type: SET_CATEGORY_VALIDATION, payload: val})}
@@ -193,7 +193,7 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
       <LabledInput
         required
         value={price.value?.toString()}
-        label="Price"
+        label="Đơn giá"
         keyboardType="numeric"
         onChangeText={
         newTxt => dispatch({type: SET_PRICE, payload: newTxt})
@@ -208,7 +208,7 @@ const ProductForm = ({submitButtonTitle, product, onSubmit}) => {
         large
         autoCapitalize="sentences"
         value={description.value}
-        label="Description"
+        label="Mô tả"
         onChangeText={newTxt =>
           dispatch({type: SET_DESCRIPTION, payload: newTxt})
         }
