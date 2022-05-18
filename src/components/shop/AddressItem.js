@@ -60,14 +60,27 @@ const AddressItem = ({
         <View style={styles.contentContainer}>
           <View style={styles.infoSection}>
             <View style={styles.details}>
-              <Text style={styles.price}>Name: {address.name}</Text>
-              <Text style={styles.title}>Phone: {address.phoney}</Text>
-              <Text style={styles.title}>Address: {address.country}</Text>
+
+              <View style={{flexDirection:'row',}}>
+              <Icon name="user-o" size={30} color={'#3333FF'}  />
+              <View style={{marginLeft:15,}}>
+              <Text style={{fontSize:20,fontWeight:"bold",color:'black',}}>: {address.name}</Text>
+              </View>
+              </View>
+
+              <View style={{flexDirection:'row',marginTop:10}}>
+              <Icon name="plane-o" size={30} color={'#3333FF'}  />
+              <Text style={{fontSize:20,fontWeight:"bold",color:'black',marginLeft:15}}>: {address.phoney}</Text>
+              </View>
+              <View style={{flexDirection:'row',marginTop:10}}>
+              <Icon name="location-o" size={30} color={'#3333FF'}  />
+              <Text style={{fontSize:20,fontWeight:"bold",color:'black',marginLeft:15}}>: {address.country}</Text>
+              </View>
             </View>
             <View style={{flexDirection:'row',marginBottom:10,}}>
               <TouchableOpacity onPress={onItemPress} style={{flexDirection:'row'}}>
-              <Icon name="gear-o" size={30} color={'#3333FF'}  />
-              <Text style={styles.title}>Edit</Text>
+              <Icon name="gear-o" size={30} color={'red'}  />
+              <Text style={{color:'red',fontSize:20,fontWeight:"bold"}}>Chỉnh sửa</Text>
               </TouchableOpacity>
               </View>
               
